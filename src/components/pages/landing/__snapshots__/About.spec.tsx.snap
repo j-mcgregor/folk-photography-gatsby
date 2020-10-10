@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About should display the experience section when tab is clicked 1`] = `
+<div>
+  <section
+    class="container-fluid py4 py2-md about"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="tabs"
+      >
+        <div
+          class="tab"
+        >
+          About
+        </div>
+        <div
+          class="tab"
+        >
+          Experience
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <section
+          class="content col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 py4 py2-md text-justify text-left-sm"
+        >
+          <div
+            class="mb3"
+          >
+            <div
+              class="text-center"
+            >
+              <h5
+                class="m0"
+              >
+                Curtain Puller
+                 @ 
+                Big Wizard Company
+              </h5>
+              <div
+                class="my1"
+              >
+                Oz
+              </div>
+              <small>
+                2000-01-01
+                 to
+                 
+                2010-12-31
+              </small>
+            </div>
+            <p>
+              operated the curtain pulley
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`About should display the experience section when tab is clicked 2`] = `
+<div>
+  <section
+    class="container-fluid py4 py2-md about"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="tabs"
+      >
+        <div
+          class="tab"
+        >
+          About
+        </div>
+        <div
+          class="tab"
+        >
+          Experience
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <section
+          class="content col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 py4 py2-md text-justify text-left-sm"
+        >
+          <p>
+            lorem ipsum
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`About should render the about section by default 1`] = `
+<div>
+  <section
+    class="container-fluid py4 py2-md about"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="tabs"
+      >
+        <div
+          class="tab"
+        >
+          About
+        </div>
+        <div
+          class="tab"
+        >
+          Experience
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <section
+          class="content col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 py4 py2-md text-justify text-left-sm"
+        >
+          <p>
+            lorem ipsum
+          </p>
+        </section>
+      </div>
+    </div>
+  </section>
+</div>
+`;

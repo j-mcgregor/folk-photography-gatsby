@@ -1,10 +1,12 @@
 import { faEtsy, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import * as React from 'react'
 
 export interface ContactMethod {
     name: string
-    link: {
+    url: {
         url: string
     }
 }
@@ -16,7 +18,8 @@ interface FooterProps {
 enum ContactIcon {
     FACEBOOK = 'Facebook',
     TWITTER = 'Twitter',
-    ETSY = 'Etsy',
+    MAIL = 'Mail',
+    PHONE = 'Phone',
 }
 
 const Iconised = ({ name, url }: { name: string; url: string }) => {
@@ -33,14 +36,20 @@ const Iconised = ({ name, url }: { name: string; url: string }) => {
                     <FontAwesomeIcon size="sm" icon={faTwitter} />
                 </a>
             )
-        case ContactIcon.ETSY:
+        case ContactIcon.MAIL:
             return (
                 <a href={url} className="etsy">
-                    <FontAwesomeIcon size="sm" icon={faEtsy} />
+                    <FontAwesomeIcon size="sm" icon={faEnvelope} />
+                </a>
+            )
+        case ContactIcon.PHONE:
+            return (
+                <a href={url} className="phone">
+                    <FontAwesomeIcon size="sm" icon={faPhone} />
                 </a>
             )
         default:
-            break
+            return <span />
     }
 }
 
@@ -49,7 +58,7 @@ const Footer: React.FC<FooterProps> = ({ links }) => {
         <div className="site-footer flex flex-row flex-center">
             <div className="social-icons">
                 {links?.map(c => (
-                    <Iconised key={c.link.url} name={c.name} url={c.link.url} />
+                    <Iconised key={c.url?.url} name={c.name} url={c.url?.url} />
                 ))}
             </div>
         </div>

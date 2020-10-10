@@ -59,9 +59,9 @@ const Layout = (props: LayoutProps) => (
                                 content: 'Get in touch',
                             },
                         ]}
+                        links={data.prismicContact.data.social_links}
                     />
                     <main>{props.children}</main>
-                    <Footer links={data.prismicContact.data.contact_method} />
                 </div>
             )
         }}
