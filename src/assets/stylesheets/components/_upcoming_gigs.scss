@@ -1,0 +1,140 @@
+// >>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>>>>>>>>>> GALLERY STRIP
+// >>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.thumbnail-classic {
+    -webkit-tap-highlight-color: rgba($black-color, 0);
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.71429;
+    font-weight: 400;
+    color: $white-color;
+    -webkit-font-smoothing: subpixel-antialiased;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+
+    &.thumbnail-border {
+        border: 2px solid white;
+    }
+
+    a.thumbnail-classic-figure {
+        -webkit-tap-highlight-color: rgba($black-color, 0);
+        -webkit-font-smoothing: subpixel-antialiased;
+        box-sizing: border-box;
+        background-color: transparent;
+        transition: all 0.3s ease-in-out;
+        text-decoration: none;
+        display: block;
+        height: 300px;
+        width: 25%;
+
+        img {
+            object-fit: cover;
+            height: 100%;
+        }
+    }
+
+    @media only screen and (max-width: $width-sm) {
+        a.thumbnail-classic-figure,
+        a.thumbnail-classic-figure img {
+            width: 100%;
+        }
+    }
+
+    .thumbnail-classic-caption {
+        -webkit-tap-highlight-color: rgba($black-color, 0);
+        -webkit-font-smoothing: subpixel-antialiased;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 25px;
+        background: rgba($primary-color, 0.4);
+        pointer-events: none;
+        transition: all 0.3s ease-in-out;
+        opacity: 0;
+
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 15px;
+            left: 17px;
+            right: 17px;
+            bottom: 15px;
+            background: linear-gradient(
+                    to right,
+                    rgba($white-color, 0.5) 0%,
+                    rgba($white-color, 0.5) 8%,
+                    transparent 8%,
+                    transparent 92%,
+                    rgba($white-color, 0.5) 92%,
+                    rgba($white-color, 0.5) 100%
+                ),
+                linear-gradient(
+                    to right,
+                    rgba($white-color, 0.5) 0%,
+                    rgba($white-color, 0.5) 8%,
+                    transparent 8%,
+                    transparent 92%,
+                    rgba($white-color, 0.5) 92%,
+                    rgba($white-color, 0.5) 100%
+                ),
+                linear-gradient(
+                    to bottom,
+                    rgba($white-color, 0.5) 0%,
+                    rgba($white-color, 0.5) 11%,
+                    transparent 11%,
+                    transparent 89%,
+                    rgba($white-color, 0.5) 89%,
+                    rgba($white-color, 0.5) 100%
+                ),
+                linear-gradient(
+                    to bottom,
+                    rgba($white-color, 0.5) 0%,
+                    rgba($white-color, 0.5) 11%,
+                    transparent 11%,
+                    transparent 89%,
+                    rgba($white-color, 0.5) 89%,
+                    rgba($white-color, 0.5) 100%
+                );
+            background-size: 100% 1px, 100% 1px, 1px 100%, 1px 100%;
+            background-position: 0 0, 0 100%, 0 0, 100% 0;
+            background-repeat: no-repeat;
+        }
+
+        .thumbnail-classic-title {
+            pointer-events: none;
+            box-sizing: border-box;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-family: $secondary-font;
+            line-height: 1.44444;
+            font-weight: 700;
+            letter-spacing: 0.025em;
+            color: $white-color;
+        }
+
+        .thumbnail-classic-time {
+            pointer-events: none;
+            box-sizing: border-box;
+            font-family: $secondary-font;
+            position: relative;
+            margin-top: 16px;
+        }
+    }
+
+    &:hover {
+        .thumbnail-classic-caption {
+            opacity: 1;
+        }
+    }
+}

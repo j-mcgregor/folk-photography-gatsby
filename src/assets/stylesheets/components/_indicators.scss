@@ -1,0 +1,145 @@
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 0 solid transparent;
+
+    &::before {
+        content: '';
+        width: 95%;
+        height: 90%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        box-shadow: 0 6px 10px 1px black;
+        z-index: -1;
+    }
+}
+
+.alert-heading {
+    color: inherit;
+}
+
+.alert-link {
+    font-weight: 700;
+}
+
+.alert-dismissible {
+    padding-right: 3.90625rem;
+}
+
+.alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.75rem 1.25rem;
+    color: inherit;
+}
+
+.alert-primary {
+    @include indicatorStyles($primary-color-light, $white-color, $light-yellow);
+}
+
+.alert-secondary {
+    @include indicatorStyles($secondary-color-light, $white-color, $light-yellow);
+}
+
+.alert-success {
+    @include indicatorStyles($success-color-light, $white-color, $light-yellow);
+}
+
+.alert-info {
+    @include indicatorStyles($info-color-light, $white-color, $light-yellow);
+}
+
+.alert-warning {
+    @include indicatorStyles($warning-color-light, $dark-grey-10, $dark-grey-10);
+}
+
+.alert-danger {
+    @include indicatorStyles($danger-color-light, $dark-grey-10, $dark-grey-10);
+}
+
+.alert-light {
+    @include indicatorStyles($light-color-light, $dark-grey-10, $primary-color);
+}
+
+.alert-dark {
+    @include indicatorStyles($dark-color-light, $white-color, $light-yellow);
+}
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>>>>>>>>>> BADGE >>>>>>>>>>>>
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    margin: 0 2px;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+
+    &:empty {
+        display: none;
+    }
+
+    &.badge-primary {
+        @include badgeStyles($primary-color, $white-color);
+    }
+
+    &.badge-secondary {
+        @include badgeStyles($secondary-color, $white-color);
+    }
+
+    &.badge-success {
+        @include badgeStyles($success-color, $white-color);
+    }
+
+    &.badge-danger {
+        @include badgeStyles($danger-color, $white-color);
+    }
+
+    &.badge-warning {
+        @include badgeStyles($warning-color, $white-color);
+    }
+
+    &.badge-info {
+        @include badgeStyles($info-color, $white-color);
+    }
+
+    &.badge-light {
+        @include badgeStyles($light-color, $dark-grey-10);
+    }
+
+    &.badge-dark {
+        @include badgeStyles($dark-color, $white-color);
+    }
+
+    &.badge-pill {
+        border-radius: 1em;
+        padding-right: 1em;
+        padding-left: 1em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .badge {
+        -webkit-transition: none;
+        transition: none;
+    }
+}

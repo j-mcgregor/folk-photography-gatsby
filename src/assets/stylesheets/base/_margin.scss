@@ -1,0 +1,248 @@
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+/* MARGIN POSITIVE */
+/* ex .m1 .m2-md .m3-sm */
+/* ex .mr1 .ml2-md .mb3-sm */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+// all sizes
+@for $i from 0 through 10 {
+    .m#{$i} {
+        margin: #{$i}em;
+    }
+
+    .mr#{$i} {
+        margin-right: #{$i}em;
+    }
+
+    .ml#{$i} {
+        margin-left: #{$i}em;
+    }
+
+    .mt#{$i} {
+        margin-top: #{$i}em;
+    }
+
+    .mb#{$i} {
+        margin-bottom: #{$i}em;
+    }
+
+    .my#{$i} {
+        margin-top: #{$i}em;
+        margin-bottom: #{$i}em;
+    }
+
+    .mx#{$i} {
+        margin-left: #{$i}em;
+        margin-right: #{$i}em;
+    }
+
+    // IMPORTANT!
+    .m#{$i}-i {
+        margin: #{$i}em !important;
+    }
+
+    .mr#{$i}-i {
+        margin-right: #{$i}em !important;
+    }
+
+    .ml#{$i}-i {
+        margin-left: #{$i}em !important;
+    }
+
+    .mt#{$i}-i {
+        margin-top: #{$i}em !important;
+    }
+
+    .mb#{$i}-i {
+        margin-bottom: #{$i}em !important;
+    }
+
+    .my#{$i}-i {
+        margin-top: #{$i}em !important;
+        margin-bottom: #{$i}em !important;
+    }
+
+    .mx#{$i}-i {
+        margin-left: #{$i}em !important;
+        margin-right: #{$i}em !important;
+    }
+}
+
+// medium @ 768px
+@media only screen and (max-width: $width-md) {
+    @for $i from 0 through 10 {
+        .m#{$i}-md {
+            margin: #{$i}em;
+        }
+
+        .mr#{$i}-md {
+            margin-right: #{$i}em;
+        }
+
+        .ml#{$i}-md {
+            margin-left: #{$i}em;
+        }
+
+        .mt#{$i}-md {
+            margin-top: #{$i}em;
+        }
+
+        .mb#{$i}-md {
+            margin-bottom: #{$i}em;
+        }
+
+        .my#{$i}-md {
+            margin-top: #{$i}em;
+            margin-bottom: #{$i}em;
+        }
+
+        .mx#{$i}-md {
+            margin-left: #{$i}em;
+            margin-right: #{$i}em;
+        }
+    }
+}
+
+// small @ 576px
+@media only screen and (max-width: $width-sm) {
+    @for $i from 0 through 10 {
+        .m#{$i}-sm {
+            margin: #{$i}em;
+        }
+
+        .mr#{$i}-sm {
+            margin-right: #{$i}em;
+        }
+
+        .ml#{$i}-sm {
+            margin-left: #{$i}em;
+        }
+
+        .mt#{$i}-sm {
+            margin-top: #{$i}em;
+        }
+
+        .mb#{$i}-sm {
+            margin-bottom: #{$i}em;
+        }
+
+        .my#{$i}-sm {
+            margin-top: #{$i}em;
+            margin-bottom: #{$i}em;
+        }
+
+        .mx#{$i}-sm {
+            margin-left: #{$i}em;
+            margin-right: #{$i}em;
+        }
+    }
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+/* MARGIN NEGATIVE */
+/* ex .m-1 .m-2-md .m-3-sm */
+/* ex .mr-1 .ml-2-md .mb-3-sm */
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
+
+// all sizes
+@for $i from 0 through 10 {
+    .m-#{$i} {
+        margin: -#{$i}em;
+    }
+
+    .mr-#{$i} {
+        margin-right: -#{$i}em;
+    }
+
+    .ml-#{$i} {
+        margin-left: -#{$i}em;
+    }
+
+    .mt-#{$i} {
+        margin-top: -#{$i}em;
+    }
+
+    .mb-#{$i} {
+        margin-bottom: -#{$i}em;
+    }
+
+    .my-#{$i} {
+        margin-top: -#{$i}em;
+        margin-bottom: -#{$i}em;
+    }
+
+    .mx-#{$i} {
+        margin-left: -#{$i}em;
+        margin-right: -#{$i}em;
+    }
+}
+
+// medium @ 768px
+@media only screen and (max-width: $width-md) {
+    @for $i from 0 through 10 {
+        .m-#{$i}-md {
+            margin: -#{$i}em;
+        }
+
+        .mr-#{$i}-md {
+            margin-right: -#{$i}em;
+        }
+
+        .ml-#{$i}-md {
+            margin-left: -#{$i}em;
+        }
+
+        .mt-#{$i}-md {
+            margin-top: -#{$i}em;
+        }
+
+        .mb-#{$i}-md {
+            margin-bottom: -#{$i}em;
+        }
+
+        .my-#{$i}-md {
+            margin-top: -#{$i}em;
+            margin-bottom: -#{$i}em;
+        }
+
+        .mx-#{$i}-md {
+            margin-left: -#{$i}em;
+            margin-right: -#{$i}em;
+        }
+    }
+}
+
+// small @ 576px
+@media only screen and (max-width: $width-sm) {
+    @for $i from 0 through 10 {
+        .m-#{$i}-sm {
+            margin: -#{$i}em;
+        }
+
+        .mr-#{$i}-sm {
+            margin-right: -#{$i}em;
+        }
+
+        .ml-#{$i}-sm {
+            margin-left: -#{$i}em;
+        }
+
+        .mt-#{$i}-sm {
+            margin-top: -#{$i}em;
+        }
+
+        .mb-#{$i}-sm {
+            margin-bottom: -#{$i}em;
+        }
+
+        .my-#{$i}-sm {
+            margin-top: -#{$i}em;
+            margin-bottom: -#{$i}em;
+        }
+
+        .mx-#{$i}-sm {
+            margin-left: -#{$i}em;
+            margin-right: -#{$i}em;
+        }
+    }
+}

@@ -1,0 +1,24 @@
+.tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .tab {
+        padding: 1em;
+        margin-left: 5px;
+        margin-right: 5px;
+        background: $info-color;
+        color: $white-color;
+        text-transform: uppercase;
+        min-width: 200px;
+        text-align: center;
+        transition: 0.2s;
+
+        &:hover {
+            cursor: pointer;
+            background: $warning-color;
+            color: $info-color;
+        }
+    }
+}

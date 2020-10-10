@@ -1,0 +1,238 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.btn {
+    padding-top: $font-size / 2;
+    padding-bottom: $font-size / 2;
+    padding-left: $font-size;
+    padding-right: $font-size;
+
+    @include button($brand-color, true);
+
+    // BOLD
+    &.btn-primary {
+        @include button($brand-color, true);
+
+        &.disabled {
+            @include button(lighten($brand-color, 20%), true);
+        }
+    }
+
+    &.btn-secondary {
+        @include button($dark-color, true);
+
+        &.disabled {
+            @include button(lighten($dark-color, 40%), true);
+        }
+    }
+
+    &.btn-warning {
+        @include button($warning-color, true);
+
+        &.disabled {
+            @include button(lighten($warning-color, 10%), true);
+        }
+    }
+
+    &.btn-success {
+        @include button($success-color, true);
+
+        &.disabled {
+            @include button(lighten($success-color, 40%), true);
+        }
+    }
+
+    &.btn-info {
+        @include button($info-color, true);
+
+        &.disabled {
+            @include button(lighten($info-color, 10%), true);
+        }
+    }
+
+    &.btn-danger {
+        @include button($danger-color, true);
+
+        &.disabled {
+            @include button(lighten($danger-color, 10%), true);
+        }
+    }
+
+    &.btn-link {
+        @include button(transparent, true);
+        color: $primary-color;
+    }
+
+    // OUTLINE
+    &.btn-outline-primary {
+        @include button($primary-color, false);
+    }
+
+    &.btn-outline-secondary {
+        @include button($dark-color, false);
+    }
+
+    &.btn-outline-warning {
+        @include button($warning-color, false);
+    }
+
+    &.btn-outline-success {
+        @include button($success-color, false);
+    }
+
+    &.btn-outline-info {
+        @include button($info-color, false);
+    }
+
+    &.btn-outline-danger {
+        @include button($danger-color, false);
+    }
+
+    // SIZE
+    &.btn-lg {
+        padding-top: $font-size;
+        padding-bottom: $font-size;
+        padding-left: $font-size;
+        padding-right: $font-size;
+    }
+
+    &.btn-sm {
+        padding-top: $font-size / 4;
+        padding-bottom: $font-size / 4;
+        padding-left: $font-size;
+        padding-right: $font-size;
+    }
+
+    &.btn-block {
+        display: block;
+        width: 100%;
+
+        & + .btn-block {
+            margin-top: 0.5rem;
+        }
+    }
+}
+
+.btn-cta {
+    padding-top: $font-size / 2;
+    padding-bottom: $font-size / 2;
+    padding-left: $font-size;
+    padding-right: $font-size;
+
+    &.corners {
+        background: transparent;
+        color: $primary-color;
+        cursor: pointer;
+        font-family: 'Open Sans Condensed-Bold', sans-serif;
+        font-size: 2.2rem;
+        letter-spacing: 0.02rem;
+        padding: 1.5rem 2rem;
+        position: relative;
+        transition: color 0.4s;
+        text-decoration: none;
+
+        &:active {
+            border-width: $border-width / 2;
+        }
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            transition: all 0.4s;
+        }
+        //the 101% is because of a pixel rounding issue in firefox
+        &::before {
+            height: 30px;
+            width: 30px;
+            top: 0;
+            left: 0;
+            border-top: $border-width solid $primary-color;
+            border-left: $border-width solid $primary-color;
+        }
+        &::after {
+            height: 30px;
+            width: 30px;
+            top: 0;
+            right: 0;
+            border-top: $border-width solid $primary-color;
+            border-right: $border-width solid $primary-color;
+        }
+    }
+
+    &.size-S {
+        font-size: $font-size;
+    }
+
+    &.size-M {
+        font-size: $font-size * 1.8;
+    }
+
+    &.size-L {
+        font-size: $font-size * 2.4;
+    }
+
+    &.size-XL {
+        font-size: $font-size * 3;
+    }
+
+    &.size-XXL {
+        font-size: $font-size * 4;
+    }
+
+    span {
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            transition: all 0.4s;
+        }
+
+        &::before {
+            height: 30px;
+            width: 30px;
+            bottom: 0;
+            left: 0;
+            border-bottom: $border-width solid $primary-color;
+            border-left: $border-width solid $primary-color;
+        }
+        &::after {
+            height: 30px;
+            width: 30px;
+            bottom: 0;
+            right: 0;
+            border-bottom: $border-width solid $primary-color;
+            border-right: $border-width solid $primary-color;
+        }
+    }
+
+    &:hover {
+        color: $secondary-color;
+        &::before {
+            border-color: $secondary-color;
+            height: 55%;
+            width: 55%;
+        }
+        &::after {
+            border-color: $secondary-color;
+            height: 55%;
+            width: 55%;
+        }
+
+        span {
+            &::before {
+                border-color: $secondary-color;
+                height: 55%;
+                width: 55%;
+            }
+            &::after {
+                border-color: $secondary-color;
+                height: 55%;
+                width: 55%;
+            }
+        }
+    }
+}

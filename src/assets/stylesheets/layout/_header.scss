@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+.jumbotron {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-transform: uppercase;
+
+  h1 {
+    font-family: 'Raleway-Black', Arial, Helvetica, sans-serif;
+  }
+
+  h2 {
+    font-family: 'Raleway-BlackItalic', Arial, Helvetica, sans-serif;
+  }
+
+  p {
+    font-family: 'Raleway-Bold', Arial, Helvetica, sans-serif;
+  }
+}

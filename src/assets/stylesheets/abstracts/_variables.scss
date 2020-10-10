@@ -1,0 +1,148 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// inspiration from https://thoughtbot.com/blog/sass-variables
+// -----------------------------------------------------------------------------
+
+// COLOR THEME FROM COOLORS.CO
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>>>>>>>>>>>>>>>>>> GREYSCALE
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+$white: #ffffff;
+$grey: rgb(75, 75, 75);
+$black: #000000;
+
+$light-grey-10: lighten($grey, 10);
+$light-grey-20: lighten($grey, 20);
+$light-grey-30: lighten($grey, 30);
+$light-grey-40: lighten($grey, 40);
+$light-grey-50: lighten($grey, 50);
+
+$dark-grey-10: darken($grey, 10);
+$dark-grey-20: darken($grey, 20);
+$dark-grey-30: darken($grey, 30);
+$dark-grey-40: darken($grey, 40);
+$dark-grey-50: darken($grey, 50);
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>>>>>>>>>>>>>>>> MAIN COLORS
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+$red: #ff6b6b;
+$orange: #d35403;
+$yellow: #ffe66d;
+$green: #60993e;
+$blue: #50a2a7;
+$indigo: #4b0082;
+$violet: #ee82ee;
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>>>>>>>>>>>>>>> LIGHT COLORS
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+$light-red: lighten($red, 10%);
+$light-orange: lighten($orange, 10%);
+$light-yellow: lighten($yellow, 10%);
+$light-green: lighten($green, 10%);
+$light-blue: lighten($blue, 10%);
+$light-indigo: lighten($indigo, 10%);
+$light-violet: lighten($violet, 10%);
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>>>>>>>>>>>>>>>> DARK COLORS
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+$dark-red: darken($red, 10%);
+$dark-orange: darken($orange, 10%);
+$dark-yellow: darken($yellow, 10%);
+$dark-green: darken($green, 10%);
+$dark-blue: darken($blue, 10%);
+$dark-indigo: darken($indigo, 10%);
+$dark-violet: darken($violet, 10%);
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>>>>>>>>>>>>>>>>>>> SEMANTIC
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+$brand-color: $orange;
+$default-color: $dark-orange;
+$primary-color: $orange;
+$secondary-color: $grey;
+$success-color: $green;
+$danger-color: $red;
+$warning-color: $yellow;
+$important-color: $dark-red;
+$info-color: $blue;
+
+$white-color: $white;
+$light-color: $light-grey-50;
+$dark-color: #272727;
+$black-color: $black;
+
+$font-color: $grey;
+$contrast-color: $dark-indigo;
+
+$facebook-color: #3b5998;
+$twitter-color: #00aced;
+$instagram-color: #ea4c89;
+$linkedin-color: #007bb6;
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// >>>>>>>>>>>>>>>>>>>>> SEMANTIC
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+$primary-color-light: lighten($orange, 20%);
+$secondary-color-light: lighten($grey, 20%);
+$success-color-light: lighten($green, 20%);
+$danger-color-light: lighten($red, 20%);
+$warning-color-light: lighten($yellow, 20%);
+$important-color-light: lighten($dark-red, 20%);
+$info-color-light: lighten($blue, 20%);
+$light-color-light: lighten($light-grey-50, 20%);
+$dark-color-light: lighten($dark-indigo, 20%);
+
+// FONT STYLE AND SIZE
+$default-font: 'Raleway-Light', sans-serif;
+$secondary-font: 'Source Code Pro', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+$theme-font: 'Open Sans Condensed-Light', sans-serif;
+
+$font-size: 16px;
+$line-height: $font-size * 1.8;
+$border-width: 10px;
+$corner-size: 3rem;
+
+$h1-size: $font-size * 2;
+$h2-size: $font-size * 1.8;
+$h3-size: $font-size * 1.6;
+$h4-size: $font-size * 1.4;
+$h5-size: $font-size * 1.2;
+$h6-size: $font-size;
+
+$h1-color: $brand-color;
+$h2-color: darken($brand-color, 10%);
+$h3-color: $grey;
+$h4-color: $grey;
+$h5-color: $grey;
+$h6-color: $grey;
+
+// BREAKPOINTS
+$width-xl: 1200px;
+$width-lg: 992px;
+$width-md: 768px;
+$width-sm: 576px;
+
+$nav-height: 60px;
+$file-upload: 50px;
+
+$themes: (
+    primary: $primary-color,
+    secondary: $secondary-color,
+    success: $success-color,
+    danger: $danger-color,
+    warning: $warning-color,
+    important: $important-color,
+    info: $info-color,
+    light: $light-color,
+    dark: $dark-color,
+);

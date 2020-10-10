@@ -1,0 +1,248 @@
+/* <<<<<<<<<< NAV >>>>>>>>>>> */
+
+.nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    // ul
+    &.nav-tabs,
+    &.nav-pills {
+        border-bottom: 1px solid $light-grey-50;
+
+        // li
+        .nav-item {
+            margin-bottom: -1px;
+
+            &.disabled {
+                color: $light-grey-50;
+
+                &:hover {
+                    .nav-link {
+                        color: inherit !important;
+                    }
+                }
+            }
+        }
+
+        .nav-link {
+            border: 2px solid transparent;
+            transition: 0.15s;
+
+            &:hover,
+            &:focus {
+                cursor: pointer;
+                color: $primary-color;
+            }
+            &.nav-tab-primary:hover {
+                color: $primary-color;
+            }
+
+            &.nav-tab-secondary:hover {
+                color: $secondary-color;
+            }
+
+            &.nav-tab-success:hover {
+                color: $success-color;
+            }
+
+            &.nav-tab-danger:hover {
+                color: $danger-color;
+            }
+
+            &.nav-tab-warning:hover {
+                color: $warning-color;
+            }
+
+            &.nav-tab-info:hover {
+                color: $info-color;
+            }
+
+            &.nav-tab-light:hover {
+                color: $light-color;
+            }
+
+            &.nav-tab-dark:hover {
+                color: $dark-color;
+            }
+
+            &.disabled:hover {
+                color: $light-grey-30;
+                background-color: transparent;
+                border-color: transparent;
+            }
+        }
+
+        .nav-link.active,
+        .nav-item.show .nav-link {
+            color: $grey;
+            background-color: $white;
+            border-color: transparent transparent $primary-color;
+
+            &.nav-tab-primary {
+                border-color: transparent transparent $primary-color;
+            }
+
+            &.nav-tab-secondary {
+                border-color: transparent transparent $secondary-color;
+            }
+
+            &.nav-tab-success {
+                border-color: transparent transparent $success-color;
+            }
+
+            &.nav-tab-danger {
+                border-color: transparent transparent $danger-color;
+            }
+
+            &.nav-tab-warning {
+                border-color: transparent transparent $warning-color;
+            }
+
+            &.nav-tab-info {
+                border-color: transparent transparent $info-color;
+            }
+
+            &.nav-tab-light {
+                border-color: transparent transparent $light-color;
+            }
+
+            &.nav-tab-dark {
+                border-color: transparent transparent $dark-color;
+            }
+        }
+
+        .dropdown-menu {
+            margin-top: -1px;
+        }
+    }
+
+    &.nav-pills {
+        position: relative;
+
+        .dropdown {
+            position: inherit;
+
+            .dropdownCard {
+                @include dropDownCard;
+            }
+        }
+
+        .nav-link.active,
+        .nav-item.show .nav-link {
+            color: $white;
+            background-color: $primary-color;
+            border-color: $primary-color;
+
+            &.nav-pill-primary {
+                @include navPillActiveTheme($primary-color);
+            }
+
+            &.nav-pill-secondary {
+                @include navPillActiveTheme($secondary-color);
+            }
+
+            &.nav-pill-success {
+                @include navPillActiveTheme($success-color);
+            }
+
+            &.nav-pill-danger {
+                @include navPillActiveTheme($danger-color);
+            }
+
+            &.nav-pill-warning {
+                @include navPillActiveTheme($warning-color);
+            }
+
+            &.nav-pill-info {
+                @include navPillActiveTheme($info-color);
+            }
+
+            &.nav-pill-light {
+                @include navPillActiveTheme($light-color, $dark-grey-10);
+            }
+
+            &.nav-pill-dark {
+                @include navPillActiveTheme($dark-color);
+            }
+        }
+
+        .nav-link {
+            &.nav-pill-primary {
+                @include navPillTheme($primary-color);
+            }
+            &.nav-pill-secondary {
+                @include navPillTheme($secondary-color);
+            }
+            &.nav-pill-success {
+                @include navPillTheme($success-color);
+            }
+            &.nav-pill-warning {
+                @include navPillTheme($warning-color);
+            }
+            &.nav-pill-danger {
+                @include navPillTheme($danger-color);
+            }
+            &.nav-pill-info {
+                @include navPillTheme($info-color);
+            }
+            &.nav-pill-light {
+                @include navPillTheme($light-color);
+            }
+            &.nav-pill-dark {
+                @include navPillTheme($dark-color);
+            }
+        }
+
+        &.vertical {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid $light-grey-50;
+            width: 160px;
+
+            .dropdownCard {
+                @include dropDownCard($vertical: true);
+            }
+            .nav-link {
+                &.nav-pill-primary {
+                    @include navPillTheme($primary-color, $vertical: true);
+                }
+                &.nav-pill-secondary {
+                    @include navPillTheme($secondary-color, $vertical: true);
+                }
+                &.nav-pill-success {
+                    @include navPillTheme($success-color, $vertical: true);
+                }
+                &.nav-pill-warning {
+                    @include navPillTheme($warning-color, $vertical: true);
+                }
+                &.nav-pill-danger {
+                    @include navPillTheme($danger-color, $vertical: true);
+                }
+                &.nav-pill-info {
+                    @include navPillTheme($info-color, $vertical: true);
+                }
+                &.nav-pill-light {
+                    @include navPillTheme($light-color, $vertical: true);
+                }
+                &.nav-pill-dark {
+                    @include navPillTheme($dark-color, $vertical: true);
+                }
+            }
+        }
+    }
+}
+.tab-content {
+    padding-top: 15px;
+    > .tab-pane {
+        display: none;
+    }
+    > .active {
+        display: block;
+    }
+}

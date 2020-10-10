@@ -1,0 +1,77 @@
+// https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_img
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 4; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: $black-color; /* Fallback color */
+    background-color: rgba($black-color, 0.9); /* Black w/ opacity */
+
+    /* Modal Content (image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        height: 80%;
+    }
+
+    /* Caption of Modal Image */
+    .caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: $white-color;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation */
+    .modal-content,
+    .caption {
+        animation-name: zoom;
+        animation-duration: 0.3s;
+    }
+
+    /* The Close Button */
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: $white-color;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+
+        &:hover,
+        &:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    }
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: $width-lg) {
+    .modal-content {
+        width: 90% !important;
+        height: auto !important;
+    }
+}

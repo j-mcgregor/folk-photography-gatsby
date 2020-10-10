@@ -1,0 +1,10 @@
+// -----------------------------------------------------------------------------
+// When having several themes, this file contains everything related to the
+// default one.
+// -----------------------------------------------------------------------------
+:root {
+    background-color: $white-color;
+    color: $dark-color;
+    font-size: $font-size;
+    font-family: $default-font;
+}

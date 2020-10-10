@@ -1,0 +1,30 @@
+.notify {
+    width: 100%;
+    max-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    position: relative;
+
+    &.notify-failure {
+        background: $important-color;
+        color: $white-color;
+    }
+
+    &.notify-success {
+        background: $contrast-color;
+        color: $white-color;
+    }
+
+    .close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 3px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,371 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+    @if $self {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    } @else {
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    }
+}
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// NAVBAR
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+@mixin navbarTheme($bgColor, $fontColor, $gradient: false) {
+    color: $fontColor;
+    a {
+        color: $fontColor;
+    }
+
+    @if $gradient {
+        background: linear-gradient(135deg, rgba($bgColor, 0.7), rgba($bgColor, 0.2));
+    } @else {
+        background: $bgColor;
+    }
+}
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// BUTTON
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+@mixin button($color, $invert: false) {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+
+    transition: 0.2s;
+    border: 1px solid $color;
+    border-radius: 0;
+    margin: 1px;
+
+    @if $invert {
+        background: $color;
+        color: $white-color;
+
+        &:hover:not(.disabled) {
+            background: $white-color;
+            color: $color;
+        }
+    } @else {
+        background: $white-color;
+        color: $color;
+
+        &:hover:not(.disabled) {
+            background: $color;
+            color: $white-color;
+        }
+    }
+
+    &:hover:not(.disabled) {
+        cursor: pointer;
+    }
+
+    &:focus,
+    &.focus {
+        outline: none;
+    }
+
+    &:disabled {
+        background: lighten($info-color, 10%);
+    }
+}
+
+@mixin toggleButtonTheme($color) {
+    &::before {
+        color: $color;
+        border-color: $color;
+        background-color: $color;
+    }
+}
+
+@mixin toggleButtonThemeUnselected($color) {
+    &::before {
+        border-color: $color;
+    }
+}
+
+@mixin corner-borders(
+    $corner-width: 1px,
+    $corner-size: 5px,
+    $color-border: $light-grey-30,
+    $color-background: $white-color
+) {
+    position: relative;
+    border: $corner-width solid $color-border;
+    background-color: $color-background;
+
+    &::before {
+        content: '';
+        z-index: 0;
+        position: absolute;
+        top: -$corner-width;
+        bottom: -$corner-width;
+        left: $corner-size;
+        right: $corner-size;
+        background-color: $color-background;
+    }
+
+    &::after {
+        content: '';
+        z-index: 0;
+        position: absolute;
+        top: $corner-size;
+        bottom: $corner-size;
+        left: -$corner-width;
+        right: -$corner-width;
+        background-color: $color-background;
+    }
+}
+
+// LOCALISED MIXINS
+
+@mixin webkitSliderThumb($color: $primary-color) {
+    width: 1rem;
+    height: 1rem;
+    margin-top: -0.4rem;
+    background-color: $color; // ball
+    border: 0;
+    -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -webkit-appearance: none;
+    appearance: none;
+    transform: rotate(45deg);
+
+    &:active {
+        background-color: lighten($color, 20%); // on click and drag
+    }
+}
+
+@mixin webkitSliderTrack($color: $primary-color) {
+    width: 100%;
+    height: 0.2rem;
+    color: transparent;
+    cursor: pointer;
+    background-color: darken($color, 20%); // runner
+    border-color: transparent;
+}
+
+@mixin mozSliderThumb($color: $primary-color) {
+    width: 1rem;
+    height: 1rem;
+    background-color: $color; // ball
+    border: 0;
+    border-radius: 0;
+    transform: rotate(45deg);
+    -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:active {
+        background-color: lighten($color, 20%); // on click and drag
+    }
+}
+
+@mixin mozSliderTrack($color: $primary-color) {
+    width: 100%;
+    height: 0.2rem;
+    color: transparent;
+    cursor: pointer;
+    background-color: darken($color, 20%); // runner
+    border-color: transparent;
+}
+
+@mixin msSliderThumb($color: $primary-color) {
+    width: 1rem;
+    height: 1rem;
+    margin-top: 0;
+    margin-right: 0.2rem;
+    margin-left: 0.2rem;
+    background-color: $color;
+    border: 0;
+    border-radius: 0;
+    transform: rotate(45deg);
+    -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    appearance: none;
+
+    &:active {
+        background-color: lighten($color, 20%); // on click and drag
+    }
+}
+
+@mixin msSliderTrack($color: $primary-color) {
+    width: 100%;
+    height: 0.5rem;
+    color: transparent;
+    cursor: pointer;
+    background-color: transparent;
+    border-color: transparent;
+    border-width: 0.5rem;
+}
+
+@mixin selectInputTheme($color) {
+    // border-color: $color;
+    .select-selected::after {
+        border-color: $color transparent transparent transparent;
+    }
+    &.select-arrow-active:after {
+        border-color: transparent transparent $color transparent;
+    }
+    .select-items div,
+    .select-selected {
+        color: $color;
+    }
+}
+
+@mixin navPillTheme($color, $vertical: false) {
+    .dropdownCard {
+        @if $vertical {
+            border-color: $color $color $color transparent;
+        } @else {
+            border-color: transparent $color $color $color;
+        }
+        ul {
+            border-color: $color;
+
+            a {
+                color: $color;
+            }
+        }
+    }
+}
+
+@mixin navPillActiveTheme($color, $text-color: $white) {
+    background-color: $color;
+    border-color: $color;
+    color: $text-color;
+}
+
+@mixin dropDownCard($vertical: false) {
+    width: 100%;
+    position: absolute;
+    background: $white;
+
+    @if $vertical {
+        top: 0;
+        left: 160px;
+        bottom: 0;
+        border-width: 1px;
+        border-style: solid;
+        border-color: $light-grey-20 $light-grey-20 $light-grey-20 transparent;
+    } @else {
+        top: 42px;
+        left: 0;
+        border-width: 1px;
+        border-style: solid;
+        border-color: transparent $light-grey-20 $light-grey-20 $light-grey-20;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+
+        li {
+            padding: 12px 10px;
+
+            a {
+                color: $primary-color;
+
+                &:hover {
+                    text-decoration: none;
+                }
+            }
+
+            &:hover {
+                background: $light-grey-50 !important;
+                text-decoration: none;
+
+                a {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+}
+
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+// INDICATORS
+// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+@mixin indicatorStyles($bgColor, $fontColor, $linkColor) {
+    color: $fontColor;
+    background-color: $bgColor;
+    border-color: $fontColor;
+
+    .alert-link {
+        color: $linkColor;
+    }
+}
+
+@mixin badgeStyles($bgColor, $fontColor) {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    color: $fontColor;
+    background-color: $bgColor;
+
+    &:empty {
+        display: none;
+    }
+}

@@ -1,0 +1,84 @@
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: $width-lg;
+    margin: auto;
+
+    .image-container {
+        flex-grow: 1;
+        height: 300px;
+
+        img:not(.modal-content) {
+            max-height: 100%;
+            min-width: 100%;
+            object-fit: cover;
+            vertical-align: bottom;
+            filter: grayscale(90);
+            transition: 0.2s;
+            border: 2px solid $white-color;
+
+            &:hover {
+                filter: none;
+                cursor: pointer;
+            }
+        }
+    }
+
+    // USED FOR V3 - EQUAL WIDTH COLUMN
+    .image-column {
+        width: 33.333%;
+
+        .image-container {
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid $white-color;
+
+            img:not(.modal-content) {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .panel {
+        margin: auto;
+        text-align: center;
+        padding-bottom: 1em;
+
+        img {
+            width: 30px;
+            height: 30px;
+            margin: 0 10px;
+
+            &:hover {
+                filter: brightness(0.5);
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: $width-lg) {
+    .gallery-container {
+        width: 95%;
+        .image-column {
+            width: 50%;
+        }
+        .image-container,
+        img {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: $width-sm) {
+    .gallery-container {
+        .image-column,
+        .image-container,
+        img {
+            width: 100%;
+        }
+    }
+}

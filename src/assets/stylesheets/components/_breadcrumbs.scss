@@ -1,0 +1,98 @@
+.breadcrumb {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+
+    &.breadcrumb-lg {
+        font-size: $h3-size;
+    }
+    &.breadcrumb-sm {
+        font-size: $h5-size;
+    }
+}
+
+.breadcrumb-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+    &.breadcrumb-primary a {
+        color: $primary-color;
+    }
+    &.breadcrumb-secondary a {
+        color: $secondary-color;
+    }
+    &.breadcrumb-success a {
+        color: $success-color;
+    }
+    &.breadcrumb-danger a {
+        color: $danger-color;
+    }
+    &.breadcrumb-warning a {
+        color: $warning-color;
+    }
+    &.breadcrumb-info a {
+        color: $info-color;
+    }
+    &.breadcrumb-light a {
+        color: $light-color;
+    }
+    &.breadcrumb-dark a {
+        color: $dark-color;
+    }
+}
+
+.breadcrumb-item + .breadcrumb-item {
+    padding-left: 0.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    display: inline-block;
+    padding-right: 0.5rem;
+    color: $grey;
+    content: '/';
+}
+
+.breadcrumb-item {
+    &.breadcrumb-primary + .breadcrumb-item::before {
+        color: $primary-color;
+    }
+    &.breadcrumb-secondary + .breadcrumb-item::before {
+        color: $secondary-color;
+    }
+    &.breadcrumb-success + .breadcrumb-item::before {
+        color: $success-color;
+    }
+    &.breadcrumb-danger + .breadcrumb-item::before {
+        color: $danger-color;
+    }
+    &.breadcrumb-warning + .breadcrumb-item::before {
+        color: $warning-color;
+    }
+    &.breadcrumb-info + .breadcrumb-item::before {
+        color: $info-color;
+    }
+    &.breadcrumb-light + .breadcrumb-item::before {
+        color: $light-color;
+    }
+    &.breadcrumb-dark + .breadcrumb-item::before {
+        color: $dark-color;
+    }
+}
+
+.breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: underline;
+}
+
+.breadcrumb-item + .breadcrumb-item:hover::before {
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: $grey;
+}

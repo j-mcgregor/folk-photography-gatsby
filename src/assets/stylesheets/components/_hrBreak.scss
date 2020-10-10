@@ -1,0 +1,24 @@
+.hr-break {
+    position: relative;
+    &::before {
+        content: '';
+        height: 1px;
+        width: 110%;
+        top: 3px;
+        left: 0;
+        position: absolute;
+        background: $primary-color;
+        transform: rotate(-7deg);
+    }
+    &::after {
+        content: '';
+        height: 1px;
+        width: 110%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        background: $primary-color;
+        transform: rotate(-10deg);
+        transform-origin: 400px;
+    }
+}

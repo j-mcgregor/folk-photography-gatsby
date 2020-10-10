@@ -1,0 +1,1031 @@
+form {
+  width: 100%;
+  legend {
+    color: $primary-color;
+    border-top: 4px double rgba($primary-color, 0.5);
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .form-group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+
+    &.row {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .form-label {
+      position: absolute;
+      top: 0;
+      transform: translateY(-10%);
+      display: block;
+      transition: 0.2s;
+      font-size: $font-size;
+      color: $light-grey-10;
+
+      &.col-form-label-lg {
+        font-size: $font-size * 1.5 !important;
+      }
+      &.col-form-label-sm {
+        font-size: $font-size * 0.8 !important;
+      }
+    }
+
+    .form-control {
+      font-family: inherit;
+      font-weight: 700;
+      font-size: $font-size;
+      color: $primary-color;
+      width: 100%;
+      border: 0;
+      border-bottom: 3px solid $light-grey-50;
+      outline: 0;
+      padding: 10px 0;
+      background: transparent;
+      transition: border-color 0.2s;
+
+      &.form-control-lg {
+        font-size: $font-size * 1.5;
+        padding-top: 20px;
+      }
+      &.form-control-sm {
+        font-size: $font-size * 0.8;
+        padding-top: 20px;
+      }
+
+      &::placeholder {
+        font-size: $font-size;
+        color: transparent;
+      }
+
+      &:placeholder-shown ~ .form-label {
+        font-size: $font-size;
+        cursor: text;
+        top: 20px;
+
+        &.col-form-label-lg {
+          font-size: $font-size * 1.5 !important;
+        }
+        &.col-form-label-sm {
+          font-size: $font-size * 0.8 !important;
+        }
+      }
+
+      &:focus {
+        font-weight: 700;
+        border-width: 3px;
+        border-image: linear-gradient(to right, $primary-color, $warning-color);
+        border-image-slice: 1;
+        box-shadow: none;
+        outline: none;
+
+        ~ .form-label {
+          position: absolute;
+          top: -5px;
+          display: block;
+          transition: 0.2s;
+          font-size: $font-size * 0.8;
+          color: $primary-color;
+          font-weight: 700;
+
+          &.col-form-label-lg {
+            font-size: $font-size * 1.2 !important;
+          }
+          &.col-form-label-lg {
+            font-size: $font-size * 0.8 !important;
+          }
+        }
+      }
+
+      &:valid ~ .col-form-label-lg {
+        font-size: $font-size * 1.2 !important;
+      }
+
+      &:required,
+      &:invalid {
+        box-shadow: none;
+      }
+
+      &:disabled {
+        color: $light-grey-50;
+
+        ~ .form-label {
+          color: $light-grey-50;
+        }
+      }
+    }
+
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>>>>>>>>>>>>>>>>> SELECT >>>>>>>>>>>>>>>>>
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    .form-control-select {
+      position: relative;
+      border: 1px solid $light-grey-40;
+
+      select {
+        display: none;
+      }
+
+      .select-selected {
+        padding: 10px 0;
+        background-color: $white-color;
+
+        &::after {
+          position: absolute;
+          content: '';
+          top: 45%;
+          right: 10px;
+          width: 0;
+          height: 0;
+          border: 6px solid transparent;
+          border-color: $primary-color transparent transparent transparent;
+        }
+
+        &.select-arrow-active:after {
+          border-color: transparent transparent $primary-color transparent;
+          top: 35%;
+        }
+      }
+      .select-items div,
+      .select-selected {
+        color: $primary-color;
+        padding: $font-size;
+        border: 1px solid $light-grey-40;
+        border-color: transparent transparent rgba($black-color, 0.1)
+          transparent;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      /*style items (options):*/
+      .select-items {
+        position: absolute;
+        background-color: $white-color;
+        border: 1px solid $light-grey-40;
+        width: 100%;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 99;
+      }
+
+      /*hide the items when the select box is closed:*/
+      .select-hide {
+        display: none;
+      }
+
+      .select-items div:hover,
+      .same-as-selected {
+        background-color: rgba($black-color, 0.1);
+      }
+
+      // themes
+      &.select-primary {
+        @include selectInputTheme($primary-color);
+      }
+
+      &.select-secondary {
+        @include selectInputTheme($secondary-color);
+      }
+
+      &.select-success {
+        @include selectInputTheme($success-color);
+      }
+
+      &.select-warning {
+        @include selectInputTheme($warning-color);
+      }
+
+      &.select-danger {
+        @include selectInputTheme($danger-color);
+      }
+
+      &.select-info {
+        @include selectInputTheme($info-color);
+      }
+
+      &.select-dark {
+        @include selectInputTheme($dark-color);
+      }
+
+      &.select-light {
+        @include selectInputTheme($light-color);
+      }
+
+      &.form-select-sm {
+        .select-items div,
+        .select-selected {
+          font-size: $font-size - 3px;
+          padding: $font-size - 5px;
+        }
+      }
+
+      &.form-select-lg {
+        .select-items div,
+        .select-selected {
+          font-size: $font-size + 3px;
+          padding: $font-size + 5px;
+        }
+      }
+    }
+  }
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>> FILE UPLOAD >>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  .file-upload-wrapper {
+    position: relative;
+    width: 100%;
+    height: $file-upload;
+    margin-bottom: 10px;
+
+    &:after {
+      content: attr(data-text);
+      font-size: $font-size;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: $white-color;
+      padding: 10px 15px;
+      display: block;
+      width: calc(100% - 40px);
+      pointer-events: none;
+      z-index: 20;
+      height: $file-upload - #{$file-upload / 3};
+      line-height: $file-upload - #{$file-upload / 3};
+      color: $light-grey-40;
+      border-radius: 5px 10px 10px 5px;
+      font-weight: 300;
+    }
+
+    .upload-label {
+      position: absolute;
+
+      top: 0;
+      right: 0;
+      display: inline-block;
+      min-height: $file-upload;
+      max-height: $file-upload;
+      min-width: 100px;
+      max-width: 100px;
+      background: $primary-color;
+      color: $white-color;
+      font-weight: 700;
+      z-index: 25;
+      font-size: $font-size;
+      line-height: 100%;
+      text-transform: uppercase;
+      text-align: center;
+      pointer-events: none;
+      border-radius: 0 5px 5px 0;
+      transition: 0.2s;
+      cursor: pointer;
+
+      > div {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: $file-upload;
+        width: 100%;
+      }
+    }
+
+    &:hover {
+      &:before {
+        background: darken($primary-color, 10%);
+      }
+    }
+    input {
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 99;
+      height: $file-upload - #{$file-upload / 3};
+      margin: 0;
+      padding: 0;
+      display: block;
+      cursor: pointer;
+      width: 100%;
+    }
+    border-bottom: 1px solid $light-grey-50;
+  }
+
+  .valid-feedback,
+  .invalid-feedback {
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+    box-sizing: inherit;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    display: block;
+  }
+
+  .valid-feedback {
+    color: $success-color;
+  }
+  .valid-infeedback {
+    color: $danger-color;
+  }
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>> RADIO >>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  .custom-radio {
+    .custom-control-input {
+      &:checked ~ .custom-control-label {
+        @include toggleButtonTheme($primary-color);
+
+        &.radio-secondary {
+          @include toggleButtonTheme($secondary-color);
+        }
+
+        &.radio-success {
+          @include toggleButtonTheme($success-color);
+        }
+
+        &.radio-warning {
+          @include toggleButtonTheme($warning-color);
+        }
+
+        &.radio-danger {
+          @include toggleButtonTheme($danger-color);
+        }
+
+        &.radio-info {
+          @include toggleButtonTheme($info-color);
+        }
+
+        &.radio-dark {
+          @include toggleButtonTheme($dark-color);
+        }
+
+        &.radio-light {
+          @include toggleButtonTheme($light-color);
+        }
+      }
+
+      &:disabled ~ .custom-control-label {
+        &.radio-primary::before {
+          background-color: lighten($secondary-color, 15%);
+          border-color: lighten($secondary-color, 15%);
+        }
+
+        &.radio-secondary::before {
+          background-color: lighten($secondary-color, 15%);
+          border-color: lighten($secondary-color, 15%);
+        }
+
+        &.radio-success::before {
+          background-color: lighten($success-color, 15%);
+          border-color: lighten($success-color, 15%);
+        }
+
+        &.radio-warning::before {
+          background-color: lighten($warning-color, 15%);
+          border-color: lighten($warning-color, 15%);
+        }
+
+        &.radio-danger::before {
+          background-color: lighten($danger-color, 15%);
+          border-color: lighten($danger-color, 15%);
+        }
+
+        &.radio-info::before {
+          background-color: lighten($info-color, 15%);
+          border-color: lighten($info-color, 15%);
+        }
+
+        &.radio-dark::before {
+          background-color: lighten($dark-color, 25%);
+          border-color: lighten($dark-color, 25%);
+        }
+
+        &.radio-light::before {
+          background-color: lighten($light-color, 15%);
+          border-color: lighten($light-color, 15%);
+        }
+      }
+
+      &:disabled:checked ~ .custom-control-label {
+        @include toggleButtonTheme(lighten($primary-color, 10%));
+
+        &.radio-secondary {
+          @include toggleButtonTheme(lighten($secondary-color, 10%));
+        }
+
+        &.radio-success {
+          @include toggleButtonTheme(lighten($success-color, 10%));
+        }
+
+        &.radio-warning {
+          @include toggleButtonTheme(lighten($warning-color, 10%));
+        }
+
+        &.radio-danger {
+          @include toggleButtonTheme(lighten($danger-color, 10%));
+        }
+
+        &.radio-info {
+          @include toggleButtonTheme(lighten($info-color, 10%));
+        }
+
+        &.radio-dark {
+          @include toggleButtonTheme(lighten($dark-color, 25%));
+        }
+
+        &.radio-light {
+          @include toggleButtonTheme(lighten($light-color, 10%));
+        }
+      }
+
+      &:focus {
+        outline: none;
+        ~ .custom-control-label::before {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .custom-control-label {
+      &:focus,
+      &:active {
+        outline: none;
+      }
+      &::before {
+        border-radius: 50%;
+        border-width: 2px;
+        border-color: $primary-color;
+      }
+      &.radio-secondary::before {
+        border-color: $secondary-color;
+      }
+
+      &.radio-success::before {
+        border-color: $success-color;
+      }
+
+      &.radio-warning::before {
+        border-color: $warning-color;
+      }
+
+      &.radio-danger::before {
+        border-color: $danger-color;
+      }
+
+      &.radio-info::before {
+        border-color: $info-color;
+      }
+
+      &.radio-dark::before {
+        border-color: $dark-color;
+      }
+
+      &.radio-light::before {
+        border-color: $light-color;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>> CHECKBOX >>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  .custom-checkbox {
+    .custom-control-input {
+      &:checked ~ .custom-control-label {
+        @include toggleButtonTheme($primary-color);
+
+        &.checkbox-secondary {
+          @include toggleButtonTheme($secondary-color);
+        }
+
+        &.checkbox-success {
+          @include toggleButtonTheme($success-color);
+        }
+
+        &.checkbox-warning {
+          @include toggleButtonTheme($warning-color);
+        }
+
+        &.checkbox-danger {
+          @include toggleButtonTheme($danger-color);
+        }
+
+        &.checkbox-info {
+          @include toggleButtonTheme($info-color);
+        }
+
+        &.checkbox-dark {
+          @include toggleButtonTheme($dark-color);
+        }
+
+        &.checkbox-light {
+          @include toggleButtonTheme($light-color);
+        }
+      }
+
+      &:disabled ~ .custom-control-label {
+        &.checkbox-primary::before {
+          background-color: lighten($primary-color, 30%);
+          border-color: lighten($primary-color, 30%);
+        }
+
+        &.checkbox-secondary::before {
+          background-color: lighten($secondary-color, 15%);
+          border-color: lighten($secondary-color, 15%);
+        }
+
+        &.checkbox-success::before {
+          background-color: lighten($success-color, 15%);
+          border-color: lighten($success-color, 15%);
+        }
+
+        &.checkbox-warning::before {
+          background-color: lighten($warning-color, 15%);
+          border-color: lighten($warning-color, 15%);
+        }
+
+        &.checkbox-danger::before {
+          background-color: lighten($danger-color, 15%);
+          border-color: lighten($danger-color, 15%);
+        }
+
+        &.checkbox-info::before {
+          background-color: lighten($info-color, 15%);
+          border-color: lighten($info-color, 15%);
+        }
+
+        &.checkbox-dark::before {
+          background-color: lighten($dark-color, 50%);
+          border-color: lighten($dark-color, 50%);
+        }
+
+        &.checkbox-light::before {
+          background-color: lighten($light-color, 15%);
+          border-color: lighten($light-color, 15%);
+        }
+      }
+
+      &:disabled:checked ~ .custom-control-label {
+        @include toggleButtonTheme(lighten($primary-color, 10%));
+
+        &.checkbox-secondary {
+          @include toggleButtonTheme(lighten($secondary-color, 10%));
+        }
+
+        &.checkbox-success {
+          @include toggleButtonTheme(lighten($success-color, 10%));
+        }
+
+        &.checkbox-warning {
+          @include toggleButtonTheme(lighten($warning-color, 10%));
+        }
+
+        &.checkbox-danger {
+          @include toggleButtonTheme(lighten($danger-color, 10%));
+        }
+
+        &.checkbox-info {
+          @include toggleButtonTheme(lighten($info-color, 10%));
+        }
+
+        &.checkbox-dark {
+          @include toggleButtonTheme(lighten($dark-color, 10%));
+        }
+
+        &.checkbox-light {
+          @include toggleButtonTheme(lighten($light-color, 10%));
+        }
+      }
+
+      &:focus {
+        outline: none;
+        ~ .custom-control-label::before {
+          box-shadow: none;
+        }
+      }
+    }
+
+    .custom-control-label {
+      &:focus,
+      &:active {
+        outline: none;
+      }
+      &::before {
+        border-radius: 0;
+        border-width: 2px;
+        border-color: $primary-color;
+      }
+      &.checkbox-secondary::before {
+        border-color: $secondary-color;
+      }
+
+      &.checkbox-success::before {
+        border-color: $success-color;
+      }
+
+      &.checkbox-warning::before {
+        border-color: $warning-color;
+      }
+
+      &.checkbox-danger::before {
+        border-color: $danger-color;
+      }
+
+      &.checkbox-info::before {
+        border-color: $info-color;
+      }
+
+      &.checkbox-dark::before {
+        border-color: $dark-color;
+      }
+
+      &.checkbox-light::before {
+        border-color: $light-color;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>> SWITCH >>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  .custom-switch {
+    padding-left: 2.25rem;
+    display: inline-block;
+
+    .custom-control-input {
+      line-height: 1rem;
+
+      &:focus,
+      &:active {
+        outline: none !important;
+      }
+
+      &:checked ~ .custom-control-label {
+        &::before {
+          background-color: darken($primary-color, 30%);
+        }
+        &::after {
+          -webkit-transform: translateX(0.95rem);
+          transform: translateX(0.95rem);
+          background-color: $primary-color;
+        }
+
+        &.switch-primary {
+          &::before {
+            background-color: darken($primary-color, 30%);
+          }
+          &::after {
+            background-color: $primary-color;
+          }
+        }
+
+        &.switch-secondary {
+          &::before {
+            background-color: darken($secondary-color, 30%);
+          }
+          &::after {
+            background-color: $secondary-color;
+          }
+        }
+
+        &.switch-success {
+          &::before {
+            background-color: darken($success-color, 30%);
+          }
+          &::after {
+            background-color: $success-color;
+          }
+        }
+
+        &.switch-info {
+          &::before {
+            background-color: darken($info-color, 30%);
+          }
+          &::after {
+            background-color: $info-color;
+          }
+        }
+
+        &.switch-danger {
+          &::before {
+            background-color: darken($danger-color, 30%);
+          }
+          &::after {
+            background-color: $danger-color;
+          }
+        }
+
+        &.switch-warning {
+          &::before {
+            background-color: darken($warning-color, 30%);
+          }
+          &::after {
+            background-color: $warning-color;
+          }
+        }
+
+        &.switch-light {
+          &::before {
+            background-color: darken($light-color, 30%);
+          }
+          &::after {
+            background-color: $light-color;
+          }
+        }
+
+        &.switch-dark {
+          &::before {
+            background-color: lighten($dark-color, 30%);
+          }
+          &::after {
+            background-color: $dark-color;
+          }
+        }
+      }
+      &:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba($dark-indigo, 0.5);
+      }
+    }
+
+    .custom-control-label {
+      margin-left: 1rem;
+      height: calc(1.7rem + 1px);
+      display: flex;
+      align-items: center;
+
+      &::before {
+        left: -3.3rem;
+        width: 2.5rem;
+        height: calc(1.4rem + 1px);
+        pointer-events: all;
+        border-radius: 1rem;
+        background-color: $primary-color; // switch bg color
+        border: none;
+      }
+      &::after {
+        // UNCHECKED
+        top: calc(0.203125rem + 2px);
+        left: calc(-3.6rem + 8px);
+        width: calc(1.4rem - 4px);
+        height: calc(1.4rem - 4px);
+        background-color: darken(
+          $primary-color,
+          30%
+        ); // switch circle color when unchecked
+        border-radius: 50%;
+        -webkit-transition: background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out,
+          -webkit-box-shadow 0.15s ease-in-out;
+        transition: background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out,
+          -webkit-box-shadow 0.15s ease-in-out;
+        transition: transform 0.15s ease-in-out,
+          background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out;
+        transition: transform 0.15s ease-in-out,
+          background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out,
+          -webkit-box-shadow 0.15s ease-in-out;
+      }
+
+      &.switch-primary {
+        &::before {
+          background-color: $primary-color;
+        }
+        &::after {
+          background-color: darken($primary-color, 30%);
+        }
+      }
+
+      &.switch-secondary {
+        &::before {
+          background-color: $secondary-color;
+        }
+        &::after {
+          background-color: darken($secondary-color, 30%);
+        }
+      }
+
+      &.switch-success {
+        &::before {
+          background-color: $success-color;
+        }
+        &::after {
+          background-color: darken($success-color, 30%);
+        }
+      }
+
+      &.switch-info {
+        &::before {
+          background-color: $info-color;
+        }
+        &::after {
+          background-color: darken($info-color, 30%);
+        }
+      }
+
+      &.switch-danger {
+        &::before {
+          background-color: $danger-color;
+        }
+        &::after {
+          background-color: darken($danger-color, 30%);
+        }
+      }
+
+      &.switch-warning {
+        &::before {
+          background-color: $warning-color;
+        }
+        &::after {
+          background-color: darken($warning-color, 30%);
+        }
+      }
+
+      &.switch-light {
+        &::before {
+          background-color: $light-color;
+        }
+        &::after {
+          background-color: darken($light-color, 30%);
+        }
+      }
+
+      &.switch-dark {
+        &::before {
+          background-color: $dark-color;
+        }
+        &::after {
+          background-color: lighten($dark-color, 30%);
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .custom-switch .custom-control-label::after {
+      -webkit-transition: none;
+      transition: none;
+    }
+  }
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>> SLIDER >>>>>>>>>>>>>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+  .custom-range {
+    width: 100%;
+    height: 1.4rem;
+    padding: 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &:focus {
+      outline: none;
+    }
+    &:focus::-webkit-slider-thumb {
+      -webkit-box-shadow: 0 0 0 1px $white,
+        0 0 0 0.2rem rgba($dark-indigo, 0.25);
+      box-shadow: 0 0 0 1px $white, 0 0 0 0.2rem rgba($dark-indigo, 0.25);
+    }
+
+    &:focus::-moz-range-thumb {
+      box-shadow: 0 0 0 1px $white, 0 0 0 0.2rem rgba($dark-indigo, 0.25);
+    }
+
+    &:focus::-ms-thumb {
+      box-shadow: 0 0 0 1px $white, 0 0 0 0.2rem rgba($dark-indigo, 0.25);
+    }
+
+    &::-moz-focus-outer {
+      border: 0;
+    }
+
+    &::-webkit-slider-thumb {
+      @include webkitSliderThumb();
+    }
+
+    &::-webkit-slider-runnable-track {
+      @include webkitSliderTrack();
+    }
+
+    &::-moz-range-thumb {
+      @include mozSliderThumb();
+    }
+
+    &::-moz-range-track {
+      @include mozSliderTrack();
+    }
+
+    &::-ms-thumb {
+      @include msSliderThumb();
+    }
+
+    &::-ms-track {
+      @include msSliderTrack();
+    }
+
+    @each $key, $val in $themes {
+      &.slider-#{$key}::-webkit-slider-thumb {
+        @include webkitSliderThumb($val);
+      }
+
+      &.slider-#{$key}::-webkit-slider-runnable-track {
+        @include webkitSliderTrack($val);
+      }
+
+      &.slider-#{$key}::-moz-range-thumb {
+        @include mozSliderThumb($val);
+      }
+
+      &.slider-#{$key}::-moz-range-track {
+        @include mozSliderTrack($val);
+      }
+
+      &.slider-#{$key}::-ms-thumb {
+        @include msSliderThumb($val);
+      }
+
+      &.slider-#{$key}::-ms-track {
+        @include msSliderTrack($val);
+      }
+    }
+
+    &::-ms-fill-lower,
+    &:disabled::-ms-thumb,
+    &:disabled::-webkit-slider-thumb,
+    &:disabled::-moz-range-thumb {
+      background-color: $light-grey-50;
+    }
+
+    &::-ms-fill-upper {
+      margin-right: 15px;
+      background-color: $light-grey-50;
+    }
+
+    &:disabled::-webkit-slider-runnable-track,
+    &:disabled::-moz-range-track {
+      cursor: default;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .custom-range::-webkit-slider-thumb {
+      -webkit-transition: none;
+      transition: none;
+    }
+    .custom-range::-moz-range-thumb {
+      -webkit-transition: none;
+      transition: none;
+    }
+    .custom-range::-ms-thumb {
+      -webkit-transition: none;
+      transition: none;
+    }
+  }
+
+  // >>>>>>>>>>>>>>>>>>>>>>
+  // >>>>>>>> LOADER >>>>>>
+  // >>>>>>>>>>>>>>>>>>>>>>
+
+  .form-loading-overlay {
+    height: 100%;
+    width: 100%;
+    background: rgba($white-color, 0.5);
+    position: absolute;
+    top: 0;
+  }
+}

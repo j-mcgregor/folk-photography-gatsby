@@ -1,0 +1,352 @@
+/**
+ * Basic typography style for copy text
+ */
+
+h1 {
+    font-size: $h1-size;
+    color: $h1-color;
+}
+
+h2 {
+    font-size: $h2-size;
+    color: $h2-color;
+}
+
+h3 {
+    font-size: $h3-size;
+    color: $h3-color;
+}
+
+h4 {
+    font-size: $h4-size;
+    color: $h4-color;
+}
+
+h5 {
+    font-size: $h5-size;
+    color: $h5-color;
+}
+
+h6 {
+    font-size: $h6-size;
+    color: $h6-color;
+}
+
+.h1-style {
+    font-size: $h1-size;
+    color: $h1-color;
+}
+
+.h2-style {
+    font-size: $h2-size;
+    color: $h2-color;
+}
+
+.h3-style {
+    font-size: $h3-size;
+    color: $h3-color;
+}
+
+.h4-style {
+    font-size: $h4-size;
+    color: $h4-color;
+}
+
+.h5-style {
+    font-size: $h5-size;
+    color: $h5-color;
+}
+
+.h6-style {
+    font-size: $h6-size;
+    color: $h6-color;
+}
+
+p {
+    line-height: $line-height;
+}
+
+// COLOR
+
+.text-primary {
+    color: $primary-color;
+}
+
+.text-secondary {
+    color: $secondary-color;
+}
+
+.text-success {
+    color: $success-color;
+}
+
+.text-info {
+    color: $info-color;
+}
+
+.text-warning {
+    color: $warning-color;
+}
+
+.text-danger {
+    color: $danger-color;
+}
+
+.text-light {
+    color: $light-color;
+}
+
+.text-dark {
+    color: $dark-color;
+}
+
+.text-muted {
+    color: lighten($grey, 40%);
+}
+
+.lead {
+    color: $grey;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.font-weight-light {
+    font-weight: 300;
+}
+
+.font-weight-lighter {
+    font-weight: lighter;
+}
+
+.font-weight-normal {
+    font-weight: 400;
+}
+
+.font-weight-bold {
+    font-weight: 700;
+}
+
+.font-weight-bolder {
+    font-weight: bolder;
+}
+
+.font-italic {
+    font-style: italic;
+}
+
+// ALIGNMENT
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: auto;
+    content: '';
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.text-monospace {
+    font-family: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !important;
+}
+
+.text-justify {
+    text-align: justify !important;
+}
+
+.text-wrap {
+    white-space: normal !important;
+}
+
+.text-nowrap {
+    white-space: nowrap !important;
+}
+
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.text-white {
+    color: $white !important;
+}
+
+.text-primary {
+    color: $primary-color !important;
+}
+a.text-primary:hover,
+a.text-primary:focus {
+    color: darken($primary-color, 10%) !important;
+}
+
+.text-secondary {
+    color: $secondary-color !important;
+}
+a.text-secondary:hover,
+a.text-secondary:focus {
+    color: darken($secondary-color, 10%) !important;
+}
+
+.text-success {
+    color: $green !important;
+}
+a.text-success:hover,
+a.text-success:focus {
+    color: darken($success-color, 10%) !important;
+}
+
+.text-info {
+    color: $info-color !important;
+}
+a.text-info:hover,
+a.text-info:focus {
+    color: darken($info-color, 10%) !important;
+}
+
+.text-warning {
+    color: $warning-color !important;
+}
+a.text-warning:hover,
+a.text-warning:focus {
+    color: darken($warning-color, 10%) !important;
+}
+
+.text-danger {
+    color: $danger-color !important;
+}
+a.text-danger:hover,
+a.text-danger:focus {
+    color: darken($danger-color, 10%) !important;
+}
+
+.text-light {
+    color: $white-color !important;
+}
+a.text-light:hover,
+a.text-light:focus {
+    color: $light-grey-10 !important;
+}
+
+.text-dark {
+    color: $secondary-color !important;
+}
+a.text-dark:hover,
+a.text-dark:focus {
+    color: $dark-color !important;
+}
+
+.text-body {
+    color: $secondary-color !important;
+}
+
+.text-muted {
+    color: $light-grey-10 !important;
+}
+
+.text-black-50 {
+    color: rgba($black-color, 0.5) !important;
+}
+
+.text-white-50 {
+    color: rgba($white-color, 0.5) !important;
+}
+
+.text-hide {
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+}
+
+.text-decoration-none {
+    text-decoration: none !important;
+}
+
+.text-break {
+    word-wrap: break-word !important;
+}
+
+.text-reset {
+    color: inherit !important;
+}
+
+@media only screen and (max-width: $width-md) {
+    .text-left-md {
+        text-align: left;
+    }
+    .text-right-md {
+        text-align: right;
+    }
+    .text-center-md {
+        text-align: center;
+    }
+    .text-justify-md {
+        text-align: justify;
+    }
+}
+
+@media only screen and (max-width: $width-sm) {
+    .text-left-sm {
+        text-align: left;
+    }
+    .text-right-sm {
+        text-align: right;
+    }
+    .text-center-sm {
+        text-align: center;
+    }
+    .text-justify-sm {
+        text-align: justify;
+    }
+}
+
+.text-break {
+    position: relative;
+    z-index: 0;
+    font-size: $font-size * 0.8;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: calc(50% - 1px);
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background: $primary-color;
+        z-index: -1;
+    }
+
+    > span {
+        background: $white-color;
+        padding: 0 10px;
+    }
+}

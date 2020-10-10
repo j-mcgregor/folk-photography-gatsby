@@ -1,0 +1,207 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 10%;
+    align-items: center;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    position: relative;
+
+    &.fixed-navbar {
+        position: fixed;
+        width: 100%;
+    }
+
+    &.navbar-sm {
+        padding: 15px 10%;
+    }
+
+    &.navbar-md {
+        padding: 30px 10%;
+    }
+
+    &.navbar-lg {
+        padding: 40px 10%;
+    }
+
+    &.navbar-shadow {
+        box-shadow: 0px 4px 17px -9px black;
+    }
+
+    &.navbar-primary {
+        @include navbarTheme($primary-color, $white-color);
+    }
+
+    &.navbar-secondary {
+        @include navbarTheme($secondary-color, $white-color);
+    }
+
+    &.navbar-success {
+        @include navbarTheme($success-color, $white-color);
+    }
+
+    &.navbar-warning {
+        @include navbarTheme($warning-color, $light-grey-20);
+    }
+
+    &.navbar-info {
+        @include navbarTheme($info-color, $white-color);
+    }
+
+    &.navbar-danger {
+        @include navbarTheme($danger-color, $white-color);
+    }
+
+    &.navbar-light {
+        @include navbarTheme($light-color, $light-grey-20);
+    }
+
+    &.navbar-dark {
+        @include navbarTheme($dark-color, $white-color);
+    }
+
+    &.navbar-transparent {
+        @include navbarTheme('transparent', $primary-color);
+    }
+
+    &.navbar-gradient {
+        &.navbar-primary {
+            @include navbarTheme($primary-color, $white-color, true);
+        }
+
+        &.navbar-secondary {
+            @include navbarTheme($secondary-color, $white-color, true);
+        }
+
+        &.navbar-success {
+            @include navbarTheme($success-color, $white-color, true);
+        }
+
+        &.navbar-warning {
+            @include navbarTheme($warning-color, $light-grey-20, true);
+        }
+
+        &.navbar-info {
+            @include navbarTheme($info-color, $white-color, true);
+        }
+
+        &.navbar-danger {
+            @include navbarTheme($danger-color, $white-color, true);
+        }
+
+        &.navbar-light {
+            @include navbarTheme($light-color, $light-grey-20, true);
+        }
+
+        &.navbar-dark {
+            @include navbarTheme($dark-color, $white-color, true);
+        }
+    }
+
+    a {
+        transition: all 0.1s ease 0s;
+        color: inherit;
+
+        &.brand {
+            cursor: pointer;
+            margin-right: auto;
+        }
+
+        &:hover {
+            text-decoration: none;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+    }
+
+    ul {
+        margin: 0;
+        list-style: none;
+        display: flex;
+
+        li {
+            display: inline-block;
+            padding: 0 20px;
+        }
+    }
+
+    .cta {
+        @include button($brand-color, true);
+        padding: 5px 15px;
+        border-radius: 3rem;
+        text-transform: uppercase;
+    }
+
+    .dropdown {
+        margin: 0 3px;
+        padding: none;
+
+        .dropdownCard {
+            position: absolute;
+            width: 100%;
+            padding: 0;
+            z-index: 999;
+
+            ul {
+                display: flex;
+                flex-direction: column;
+                padding: 0;
+                border: none;
+
+                li {
+                    padding: 12px 10px;
+                    cursor: pointer;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        button {
+            border: none;
+            background: transparent;
+            &:hover {
+                background: none;
+            }
+        }
+    }
+
+    // SEARCH
+
+    form {
+        &.search-box {
+            max-width: 250px;
+
+            input[type='text'] {
+                padding: 10px;
+                max-height: 35px;
+                font-size: 17px;
+                border: 1px solid transparent;
+                float: left;
+                width: 80%;
+                background: $white-color;
+            }
+
+            button {
+                float: left;
+                width: 20%;
+                max-height: 35px;
+                padding: 10px;
+                background: $white-color;
+                color: $light-grey-10;
+                font-size: 17px;
+                border: 1px solid transparent;
+                border-left: none;
+                cursor: pointer;
+
+                &::after {
+                    content: '';
+                    clear: both;
+                    display: table;
+                }
+            }
+        }
+    }
+}
