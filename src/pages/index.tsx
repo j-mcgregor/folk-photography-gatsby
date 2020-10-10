@@ -27,7 +27,7 @@ export const query = graphql`
             }
         }
 
-        file(sourceInstanceName: { eq: "images" }, relativePath: { eq: "folk-photography-logo white.png" }) {
+        file(sourceInstanceName: { eq: "images" }, relativePath: { eq: "folk-photography-logo-white.png" }) {
             childImageSharp {
                 fixed(width: 600, height: 600) {
                     base64
