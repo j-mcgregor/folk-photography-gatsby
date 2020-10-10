@@ -1,11 +1,12 @@
-import * as React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import Layout from '../components/Layout'
-import SEO from '../components/SEO'
-import Hero from '../components/pages/landing/Hero'
-import Banner from '../components/pages/landing/Banner'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
+import * as React from 'react'
+
+import Layout from '../components/Layout'
+import Banner from '../components/pages/landing/Banner'
+import Hero from '../components/pages/landing/Hero'
+import SEO from '../components/SEO'
 
 export const query = graphql`
     query IndexPageQuery {

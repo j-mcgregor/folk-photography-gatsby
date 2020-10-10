@@ -1,7 +1,4 @@
 /* eslint-disable @typescript-eslint/camelcase */
-var PrismicDOM = require('prismic-dom')
-var Elements = PrismicDOM.RichText.Elements
-
 module.exports = {
     siteMetadata: {
         title: `Folk Photography`,
@@ -36,7 +33,7 @@ module.exports = {
                 background_color: `#663399`,
                 theme_color: `#663399`,
                 display: `minimal-ui`,
-                icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+                icon: `src/images/folk photography logo`, // This path is relative to the root of the site.
             },
         },
         {
@@ -45,7 +42,6 @@ module.exports = {
                 repositoryName: 'folk-photography',
                 schemas: {
                     landing: require('./src/schemas/landing.json'),
-                    blog_post: require('./src/schemas/blog_post.json'),
                     contact: require('./src/schemas/contact.json'),
                     gallery: require('./src/schemas/gallery.json'),
                     about: require('./src/schemas/about.json'),
