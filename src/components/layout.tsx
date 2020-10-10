@@ -10,7 +10,6 @@ import 'flexboxgrid2/flexboxgrid2.css'
 import { graphql, StaticQuery } from 'gatsby'
 import * as React from 'react'
 
-import Footer from './shared/Footer'
 import SideNav from './SideNav'
 
 const Layout = (props: LayoutProps) => (

@@ -1,10 +1,10 @@
 import { graphql } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
-import Form from '../components/form'
+import Form from '../components/shared/Form'
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
+import Layout from '../components/Layout'
+import SEO from '../components/SEO'
 
 export const query = graphql`
     {
