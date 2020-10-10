@@ -1,47 +1,57 @@
 {
-  "Main": {
-    "title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
-        "label": "title"
-      }
-    },
-    "description": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
-        "label": "description"
-      }
-    },
-    "background_image": {
-      "type": "Image",
-      "config": {
-        "constraint": {},
-        "thumbnails": [],
-        "label": "background image"
-      }
-    },
-    "contact_method": {
-      "type": "Group",
-      "config": {
-        "fields": {
-          "link": {
-            "type": "Link",
+    "Main": {
+        "uid": {
+            "type": "UID",
             "config": {
-              "allowTargetBlank": true,
-              "label": "link"
+                "label": "contact",
+                "placeholder": "contact"
             }
-          },
-          "name": {
-            "type": "Text",
-            "config": {
-              "label": "name"
-            }
-          }
         },
-        "label": "contact method"
-      }
+        "title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading3",
+                "label": "title",
+                "placeholder": "title"
+            }
+        },
+        "subtitle": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading6",
+                "label": "subtitle",
+                "placeholder": "subtitle"
+            }
+        },
+        "social_links": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "name": {
+                        "type": "Text",
+                        "config": {
+                            "label": "name",
+                            "placeholder": "name"
+                        }
+                    },
+                    "url": {
+                        "type": "Link",
+                        "config": {
+                            "allowTargetBlank": true,
+                            "label": "url",
+                            "placeholder": "url"
+                        }
+                    },
+                    "text": {
+                        "type": "Text",
+                        "config": {
+                            "label": "text",
+                            "placeholder": "text"
+                        }
+                    }
+                },
+                "label": "social links"
+            }
+        }
     }
-  }
 }

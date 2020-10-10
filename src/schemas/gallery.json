@@ -1,86 +1,77 @@
 {
-  "Main": {
-    "uid": {
-      "type": "UID",
-      "config": {
-        "label": "gallery"
-      }
-    },
-    "title": {
-      "type": "StructuredText",
-      "config": {
-        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
-        "label": "title",
-        "placeholder": "Gallery Title"
-      }
-    },
-    "description": {
-      "type": "StructuredText",
-      "config": {
-        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
-        "label": "description",
-        "placeholder": "Gallery Description"
-      }
-    },
-    "body": {
-      "type": "Slices",
-      "fieldset": "Slice zone",
-      "config": {
-        "labels": {
-          "image_gallery": []
-        },
-        "choices": {
-          "image_gallery": {
-            "type": "Slice",
-            "fieldset": "Image gallery",
-            "description": "gallery",
-            "icon": "widgets",
-            "display": "grid",
-            "non-repeat": {
-              "album": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading1, heading2, heading3, heading4, heading5, heading6",
-                  "label": "Album",
-                  "placeholder": "album name"
-                }
-              }
-            },
-            "repeat": {
-              "image": {
-                "type": "Image",
-                "config": {
-                  "constraint": {},
-                  "thumbnails": [
-                    {
-                      "name": "thumbnail",
-                      "width": 300,
-                      "height": 300
-                    }
-                  ],
-                  "label": "image"
-                }
-              },
-              "alt_text": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "Alt text",
-                  "placeholder": "alt text for tag"
-                }
-              },
-              "caption": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph, strong, hyperlink",
-                  "label": "caption",
-                  "placeholder": "A caption for the image"
-                }
-              }
+    "Main": {
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "gallery"
             }
-          }
+        },
+        "title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                "label": "title",
+                "placeholder": "Gallery Title"
+            }
+        },
+        "description": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                "label": "description",
+                "placeholder": "Gallery Description"
+            }
+        },
+        "body": {
+            "type": "Slices",
+            "fieldset": "Slice zone",
+            "config": {
+                "labels": {
+                    "image_gallery": []
+                },
+                "choices": {
+                    "image_gallery": {
+                        "type": "Slice",
+                        "fieldset": "Image gallery",
+                        "description": "gallery",
+                        "icon": "widgets",
+                        "display": "grid",
+                        "non-repeat": {},
+                        "repeat": {
+                            "image": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [
+                                        {
+                                            "name": "thumbnail",
+                                            "width": 300,
+                                            "height": 300
+                                        }
+                                    ],
+                                    "label": "image"
+                                }
+                            },
+                            "alt_text": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph",
+                                    "label": "Alt text",
+                                    "placeholder": "alt text for tag"
+                                }
+                            },
+                            "caption": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph, strong, hyperlink",
+                                    "label": "caption",
+                                    "placeholder": "A caption for the image"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }

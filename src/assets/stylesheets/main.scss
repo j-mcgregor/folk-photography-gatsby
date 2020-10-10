@@ -24,6 +24,7 @@
 @import 'layout/header';
 @import 'layout/footer';
 @import 'layout/gallery';
+@import 'layout/sidenav';
 @import 'layout/main';
 
 // 5. Components
@@ -51,16 +52,16 @@
 @import 'themes/default';
 
 @font-face {
-  font-family: 'Raleway-Light';
-  src: url(../fonts/Raleway/Raleway-Light.ttf) format('truetype');
+    font-family: 'Raleway-Light';
+    src: url(../fonts/Raleway/Raleway-Light.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Raleway-Regular';
-  src: url(../fonts/Raleway/Raleway-Regular.ttf) format('truetype');
+    font-family: 'Raleway-Regular';
+    src: url(../fonts/Raleway/Raleway-Regular.ttf) format('truetype');
 }
 
 @font-face {
-  font-family: 'Raleway-Thin';
-  src: url(../fonts/Raleway/Raleway-Thin.ttf) format('truetype');
+    font-family: 'Raleway-Thin';
+    src: url(../fonts/Raleway/Raleway-Thin.ttf) format('truetype');
 }

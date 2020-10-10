@@ -7,65 +7,54 @@ import Layout from '../components/layout'
 import SEO from '../components/seo'
 
 export const query = graphql`
-  {
-    prismicContact {
-      data {
-        title {
-          raw
+    {
+        prismicContact {
+            data {
+                title {
+                    raw
+                }
+                subtitle {
+                    raw
+                }
+            }
         }
-        description {
-          raw
-        }
-        background_image {
-          url
-          alt
-        }
-      }
     }
-  }
 `
 
 interface ContactPageProps {
-  data: {
-    prismicContact: {
-      data: {
-        title: {
-          raw: RichTextBlock[]
+    data: {
+        prismicContact: {
+            data: {
+                title: {
+                    raw: RichTextBlock[]
+                }
+                subtitle: {
+                    raw: RichTextBlock[]
+                }
+            }
         }
-        description: {
-          raw: RichTextBlock[]
-        }
-        background_image: {
-          alt: string
-          url: string
-        }
-      }
     }
-  }
 }
 
 const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
-  const { title, description, background_image } = data.prismicContact.data
+    const { title, subtitle } = data.prismicContact.data
 
-  return (
-    <Layout>
-      <SEO title="Contact" />
-      <div className="contact flex flex-column">
-        <div
-          className="jumbotron p7 text-center"
-          style={{ backgroundImage: `url(${background_image?.url})` }}
-        >
-          {title?.raw && <RichText render={title.raw} />}
-          {description?.raw && (
-            <div className="description">
-              <RichText render={description.raw} />
+    return (
+        <Layout>
+            <SEO title="Contact" />
+            <div className="contact flex flex-column">
+                <div className="jumbotron p7 text-center">
+                    {title?.raw && <RichText render={title.raw} />}
+                    {subtitle?.raw && (
+                        <div className="description">
+                            <RichText render={subtitle.raw} />
+                        </div>
+                    )}
+                </div>
+                <Form />
             </div>
-          )}
-        </div>
-        <Form />
-      </div>
-    </Layout>
-  )
+        </Layout>
+    )
 }
 
 export default ContactPage

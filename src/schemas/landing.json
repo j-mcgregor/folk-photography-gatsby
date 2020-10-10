@@ -1,0 +1,94 @@
+{
+    "Main": {
+        "primary_text": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading2",
+                "label": "primary text",
+                "placeholder": "primary text"
+            }
+        },
+        "secondary_text": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading3",
+                "label": "secondary text",
+                "placeholder": "secondary text"
+            }
+        },
+        "background_image": {
+            "type": "Image",
+            "config": {
+                "constraint": {},
+                "thumbnails": [],
+                "label": "background image"
+            }
+        },
+        "about": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph, heading4, heading5, heading6, strong, em, hyperlink, embed, list-item, o-list-item, o-list-item",
+                "label": "about",
+                "placeholder": "about"
+            }
+        },
+        "experience": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "job_title": {
+                        "type": "Text",
+                        "config": {
+                            "label": "job title",
+                            "placeholder": "job title"
+                        }
+                    },
+                    "company": {
+                        "type": "Text",
+                        "config": {
+                            "label": "company",
+                            "placeholder": "company"
+                        }
+                    },
+                    "city": {
+                        "type": "Text",
+                        "config": {
+                            "label": "city",
+                            "placeholder": "city"
+                        }
+                    },
+                    "date_from": {
+                        "type": "Date",
+                        "config": {
+                            "label": "date from",
+                            "placeholder": "date from"
+                        }
+                    },
+                    "date_to": {
+                        "type": "Date",
+                        "config": {
+                            "label": "date to",
+                            "placeholder": "date to"
+                        }
+                    },
+                    "present": {
+                        "type": "Boolean",
+                        "config": {
+                            "default_value": false,
+                            "label": "present"
+                        }
+                    },
+                    "description": {
+                        "type": "StructuredText",
+                        "config": {
+                            "multi": "paragraph, strong, em, list-item, o-list-item",
+                            "label": "description",
+                            "placeholder": "description"
+                        }
+                    }
+                },
+                "label": "experience"
+            }
+        }
+    }
+}

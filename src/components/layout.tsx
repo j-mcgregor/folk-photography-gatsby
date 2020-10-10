@@ -14,56 +14,62 @@ import Footer from './shared/Footer'
 import SideNav from './SideNav'
 
 const Layout = (props: LayoutProps) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-        prismicContact {
-          data {
-            contact_method {
-              name
-              link {
-                url
-              }
+    <StaticQuery
+        query={graphql`
+            query SiteTitleQuery {
+                site {
+                    siteMetadata {
+                        title
+                    }
+                }
+                prismicContact {
+                    data {
+                        title {
+                            raw
+                        }
+                        subtitle {
+                            raw
+                        }
+                        social_links {
+                            url {
+                                url
+                            }
+                            name
+                        }
+                    }
+                }
             }
-          }
-        }
-      }
-    `}
-    render={data => {
-      return (
-        <div className="main-container">
-          <SideNav
-            title={data.site.siteMetadata.title}
-            options={[
-              {
-                to: '/about',
-                content: 'About',
-              },
-              {
-                to: '/portfolio',
-                content: 'Portfolio',
-              },
-              {
-                to: '/contact',
-                content: 'Get in touch',
-              },
-            ]}
-          />
-          <main>{props.children}</main>
-          <Footer links={data.prismicContact.data.contact_method} />
-        </div>
-      )
-    }}
-  />
+        `}
+        render={data => {
+            return (
+                <div className="main-container">
+                    <SideNav
+                        title={data.site.siteMetadata.title}
+                        options={[
+                            {
+                                to: '/about',
+                                content: 'About',
+                            },
+                            {
+                                to: '/portfolio',
+                                content: 'Portfolio',
+                            },
+                            {
+                                to: '/contact',
+                                content: 'Get in touch',
+                            },
+                        ]}
+                    />
+                    <main>{props.children}</main>
+                    <Footer links={data.prismicContact.data.contact_method} />
+                </div>
+            )
+        }}
+    />
 )
 
 interface LayoutProps {
-  children: unknown
+    children: unknown
 }
 
 export default Layout

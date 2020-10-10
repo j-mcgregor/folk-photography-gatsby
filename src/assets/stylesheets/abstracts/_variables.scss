@@ -10,8 +10,8 @@
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 $white: #ffffff;
-$grey: rgb(75, 75, 75);
-$black: #000000;
+$grey: #a6a6a8;
+$black: #272635;
 
 $light-grey-10: lighten($grey, 10);
 $light-grey-20: lighten($grey, 20);
@@ -29,13 +29,13 @@ $dark-grey-50: darken($grey, 50);
 // >>>>>>>>>>>>>>>>>> MAIN COLORS
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-$red: #ff6b6b;
-$orange: #d35403;
-$yellow: #ffe66d;
-$green: #60993e;
-$blue: #50a2a7;
-$indigo: #4b0082;
-$violet: #ee82ee;
+$red: #6e0d25;
+$orange: #cd533b;
+$yellow: #f8eaa6;
+$green: #297045;
+$blue: #b1e5f2;
+$indigo: #9d44b5;
+$violet: #ed217c;
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // >>>>>>>>>>>>>>>>> LIGHT COLORS
@@ -65,7 +65,7 @@ $dark-violet: darken($violet, 10%);
 // >>>>>>>>>>>>>>>>>>>>> SEMANTIC
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
-$brand-color: $orange;
+$brand-color: $red;
 $default-color: $dark-orange;
 $primary-color: $orange;
 $secondary-color: $grey;
@@ -131,6 +131,8 @@ $width-xl: 1200px;
 $width-lg: 992px;
 $width-md: 768px;
 $width-sm: 576px;
+
+$sidenavWidth: 250px;
 
 $nav-height: 60px;
 $file-upload: 50px;

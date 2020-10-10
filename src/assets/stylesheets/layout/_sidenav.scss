@@ -1,0 +1,45 @@
+.sidenav {
+    padding: 2em 40px 0 2em;
+    overflow: hidden;
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    flex-direction: column;
+    background: $white-color;
+    z-index: 10;
+    font-size: $h5-size;
+    border-right: 1px solid $light-grey-20;
+    max-width: $sidenavWidth;
+
+    a {
+        color: $dark-grey-20;
+        margin: 10px 0;
+        text-transform: uppercase;
+        font-size: 0.8em;
+
+        &:hover {
+            color: $red;
+            text-decoration: none;
+        }
+        img.logo {
+            width: 100px;
+            margin-bottom: 3em;
+        }
+    }
+
+    .subnav-1 {
+        list-style: none;
+        padding: 10px 10px;
+        font-size: $h6-size;
+
+        a {
+            color: $light-grey-20;
+
+            &:hover {
+                color: $light-grey-50;
+            }
+        }
+    }
+}
