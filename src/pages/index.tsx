@@ -9,7 +9,7 @@ import Hero from '../components/pages/landing/Hero'
 import SEO from '../components/SEO'
 
 export const query = graphql`
-    query IndexPageQuery {
+    {
         prismicLanding {
             data {
                 primary_text {
@@ -83,7 +83,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
             <SEO title="Home" />
             {background_image?.url && (
                 <>
-                    <Hero logo={logo} backgroundImage={background_image.url} />
+                    <Hero logo={logo} backgroundImage={background_image?.url} />
                     <Banner>
                         {primary_text && <RichText render={primary_text.raw} />}
                         {secondary_text && <RichText render={secondary_text.raw} />}
