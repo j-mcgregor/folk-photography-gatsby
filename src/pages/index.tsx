@@ -9,7 +9,7 @@ import Hero from '../components/pages/landing/Hero'
 import SEO from '../components/SEO'
 
 export const query = graphql`
-    {
+    query IndexPageQuery {
         prismicLanding {
             data {
                 primary_text {

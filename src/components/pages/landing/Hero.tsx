@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { Breakpoints, HeroProps, StyledHeroProps } from '../../../types/enums'
 
 const StyledHero = styled.div<StyledHeroProps>`
-    background: ${({ bgImageUrl }) => `url(${bgImageUrl})`};
     background-size: cover;
     background-position: right center;
     background-repeat: no-repeat;
@@ -37,7 +36,11 @@ const StyledHero = styled.div<StyledHeroProps>`
 const Hero: React.FC<HeroProps> = ({ logo, backgroundImage }) => {
     return (
         backgroundImage && (
-            <StyledHero bgImageUrl={backgroundImage} className="flex flex-column flex-center">
+            <StyledHero
+                bgImageUrl={backgroundImage}
+                className="flex flex-column flex-center"
+                style={{ backgroundImage: `url(${backgroundImage})` }}
+            >
                 {logo}
             </StyledHero>
         )
