@@ -4,6 +4,7 @@ module.exports = {
         title: `Folk Photography`,
         description: `Real people. Real photos.`,
         author: `@jmcgregor`,
+        siteUrl: 'https://folk-photography.netlify.app/',
     },
     plugins: [
         `gatsby-plugin-react-helmet`,
@@ -50,6 +51,7 @@ module.exports = {
         },
 
         `gatsby-plugin-typescript`,
+        `gatsby-plugin-netlify`,
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
