@@ -1,0 +1,29 @@
+.hero {
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100vh;
+    text-transform: uppercase;
+    animation: fadeIn 0.5s ease-in;
+
+    h3 {
+        font-family: 'Abel', sans-serif;
+    }
+
+    @media screen and (max-width: $width-md) {
+        height: 600px;
+    }
+    @media screen and (max-width: $width-sm) {
+        height: 500px;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+}
