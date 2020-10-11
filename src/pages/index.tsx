@@ -83,12 +83,16 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
     return (
         <Layout>
             <SEO title="Home" />
-            <Hero logo={logo} backgroundImage={backgroundImage} />
-            <Banner>
-                {primary_text && <RichText render={primary_text.raw} />}
-                {secondary_text && <RichText render={secondary_text.raw} />}
-                {about && <RichText render={about.raw} />}
-            </Banner>
+            {backgroundImage && (
+                <>
+                    <Hero logo={logo} backgroundImage={backgroundImage} />
+                    <Banner>
+                        {primary_text && <RichText render={primary_text.raw} />}
+                        {secondary_text && <RichText render={secondary_text.raw} />}
+                        {about && <RichText render={about.raw} />}
+                    </Banner>
+                </>
+            )}
         </Layout>
     )
 }
