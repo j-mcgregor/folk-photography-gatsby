@@ -11,10 +11,18 @@ const StyledBanner = styled.div`
     h2 {
         text-transform: uppercase;
     }
+
+    p {
+        line-height: 1.5em;
+
+        a {
+            color: red;
+        }
+    }
 `
 
 const Banner: React.FC<BannerProps> = ({ children }) => {
-    return <StyledBanner className="container p3">{children}</StyledBanner>
+    return <StyledBanner className="banner container p3">{children}</StyledBanner>
 }
 
 export default Banner

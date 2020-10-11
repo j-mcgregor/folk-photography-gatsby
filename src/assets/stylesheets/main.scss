@@ -28,10 +28,8 @@
 @import 'layout/main';
 
 // 5. Components
-@import 'components/about';
 @import 'components/breadcrumbs';
 @import 'components/button';
-@import 'components/card';
 @import 'components/form';
 @import 'components/hrBreak';
 @import 'components/indicators';
@@ -44,7 +42,6 @@
 @import 'components/upcoming_gigs';
 
 // 6. Page-specific styles
-@import 'pages/home';
 @import 'pages/about';
 @import 'pages/contact';
 

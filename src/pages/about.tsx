@@ -48,7 +48,8 @@ interface AboutPageProps {
 }
 
 const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
-    const { title, description } = data.prismicAbout.data
+    const { title, description, main_image } = data.prismicAbout.data
+
     return (
         <Layout>
             <SEO title="About" />
@@ -57,6 +58,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
                 {description?.raw && (
                     <div className="description text-justify">
                         <RichText render={description.raw} />
+                        {main_image && <img src={main_image.url} alt="Logo" style={{ width: '100%' }} />}
                     </div>
                 )}
             </div>

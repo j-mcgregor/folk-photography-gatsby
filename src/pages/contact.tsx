@@ -43,7 +43,7 @@ const ContactPage: React.FC<ContactPageProps> = ({ data }) => {
         <Layout>
             <SEO title="Contact" />
             <div className="contact flex flex-column">
-                <div className="jumbotron p7 text-center">
+                <div className="jumbotron pt7 pb3 text-center">
                     {title?.raw && <RichText render={title.raw} />}
                     {subtitle?.raw && (
                         <div className="description">

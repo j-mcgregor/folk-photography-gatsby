@@ -8,7 +8,7 @@
     padding-left: $font-size;
     padding-right: $font-size;
 
-    @include button($brand-color, true);
+    @include button($brand-color);
 
     // BOLD
     &.btn-primary {
@@ -17,76 +17,6 @@
         &.disabled {
             @include button(lighten($brand-color, 20%), true);
         }
-    }
-
-    &.btn-secondary {
-        @include button($dark-color, true);
-
-        &.disabled {
-            @include button(lighten($dark-color, 40%), true);
-        }
-    }
-
-    &.btn-warning {
-        @include button($warning-color, true);
-
-        &.disabled {
-            @include button(lighten($warning-color, 10%), true);
-        }
-    }
-
-    &.btn-success {
-        @include button($success-color, true);
-
-        &.disabled {
-            @include button(lighten($success-color, 40%), true);
-        }
-    }
-
-    &.btn-info {
-        @include button($info-color, true);
-
-        &.disabled {
-            @include button(lighten($info-color, 10%), true);
-        }
-    }
-
-    &.btn-danger {
-        @include button($danger-color, true);
-
-        &.disabled {
-            @include button(lighten($danger-color, 10%), true);
-        }
-    }
-
-    &.btn-link {
-        @include button(transparent, true);
-        color: $primary-color;
-    }
-
-    // OUTLINE
-    &.btn-outline-primary {
-        @include button($primary-color, false);
-    }
-
-    &.btn-outline-secondary {
-        @include button($dark-color, false);
-    }
-
-    &.btn-outline-warning {
-        @include button($warning-color, false);
-    }
-
-    &.btn-outline-success {
-        @include button($success-color, false);
-    }
-
-    &.btn-outline-info {
-        @include button($info-color, false);
-    }
-
-    &.btn-outline-danger {
-        @include button($danger-color, false);
     }
 
     // SIZE
