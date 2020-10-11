@@ -76,8 +76,9 @@ const Form = () => {
             onSubmit={handleSubmit}
             name={formName}
             data-netlify="true"
-            netlify-honeypot="bot-field"
+            data-netlify-honeypot="bot-field"
         >
+            <input type="hidden" name="form-name" value={formName} />
             {loading && (
                 <StyledLoadingOverlay>
                     <StyledSpinner />
