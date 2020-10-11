@@ -54,7 +54,6 @@ const Layout = (props: LayoutProps) => (
             }
         `}
         render={data => {
-            console.log(data)
             return (
                 <div className="main-container">
                     <SideNav

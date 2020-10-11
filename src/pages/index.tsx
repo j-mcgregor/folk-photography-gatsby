@@ -76,16 +76,14 @@ interface IndexPageProps {
 const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } }) => {
     const { primary_text, secondary_text, about, background_image } = prismicLanding.data
 
-    const backgroundImage: string = background_image?.url
-
     const logo = file?.childImageSharp.fixed && <Img fixed={file.childImageSharp.fixed} alt="Logo" />
 
     return (
         <Layout>
             <SEO title="Home" />
-            {backgroundImage && (
+            {background_image?.url && (
                 <>
-                    <Hero logo={logo} backgroundImage={backgroundImage} />
+                    <Hero logo={logo} backgroundImage={background_image.url} />
                     <Banner>
                         {primary_text && <RichText render={primary_text.raw} />}
                         {secondary_text && <RichText render={secondary_text.raw} />}

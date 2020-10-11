@@ -38,7 +38,7 @@ const Hero: React.FC<HeroProps> = ({ logo, backgroundImage }) => {
     return (
         backgroundImage && (
             <StyledHero bgImageUrl={backgroundImage} className="flex flex-column flex-center">
-                {logo || null}
+                {logo}
             </StyledHero>
         )
     )
