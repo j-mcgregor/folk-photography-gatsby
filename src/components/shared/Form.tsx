@@ -48,7 +48,6 @@ const Form = () => {
         e.preventDefault()
         setLoading(true)
         const data = { 'form-name': formName, Name: name, Email: email, Message: message }
-        console.log(encode(data))
         const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
 
         try {

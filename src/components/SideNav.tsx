@@ -1,6 +1,6 @@
 import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
-import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faMinus, faPhone, faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import * as React from 'react'
@@ -64,6 +64,8 @@ const Iconised = ({ name, url }: { name: string; url: string }) => {
 }
 
 const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
+    const [showSubNav, setShowSubNav] = React.useState<boolean>(false)
+
     return (
         <div className="sidenav">
             {logo && <img src={logo} alt="logo" style={{ width: '100%' }} />}
@@ -72,10 +74,21 @@ const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
             </h4>
             {options.map(nav => (
                 <>
-                    <Link key={nav.to.replace(/ /g, '-')} to={nav.to}>
-                        {nav.content}
-                    </Link>
-                    {window.location.pathname.startsWith('/portfolio') &&
+                    <span
+                        className="flex flex-justify-between flex-align-center"
+                        key={nav.to.replace(/ /g, '-')}
+                    >
+                        <Link to={nav.to}>{nav.content}</Link>
+                        {nav.content === 'Portfolio' && (
+                            <FontAwesomeIcon
+                                icon={showSubNav ? faMinus : faPlus}
+                                size="xs"
+                                onClick={() => setShowSubNav(!showSubNav)}
+                                style={{ cursor: 'pointer' }}
+                            />
+                        )}
+                    </span>
+                    {showSubNav &&
                         nav.subnav?.map(sub => (
                             <Link key={sub.to.replace(/ /g, '-')} to={sub.to} className="pl1">
                                 <small>{sub.content}</small>

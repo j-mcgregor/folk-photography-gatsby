@@ -78,8 +78,6 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
 
     const logo = file?.childImageSharp.fixed && <Img fixed={file.childImageSharp.fixed} alt="Logo" />
 
-    console.log(background_image.url)
-
     return (
         <Layout>
             <SEO title="Home" />

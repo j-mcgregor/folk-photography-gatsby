@@ -75,7 +75,7 @@ const Layout = (props: LayoutProps) => (
                 }
                 return nav
             })
-            console.log(subnav)
+
             return (
                 <div className="main-container">
                     <SideNav

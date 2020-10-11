@@ -14,7 +14,6 @@ interface GalleryContainerProps {
 
 const GalleryContainer: React.FC<GalleryContainerProps> = ({ images }) => {
     const [gridStyle, setGridStyle] = React.useState<GridStyle>(GridStyle.COL)
-    console.log(images)
 
     React.useEffect(() => {
         const item = window.localStorage.getItem('GridStyle')
@@ -140,8 +139,6 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ images }) => {
             )
         })
         .filter(i => i)
-
-    console.log('gridStyle : ', gridStyle)
 
     return (
         <div className="gallery-container pb3" data-testid="gallery-container">
