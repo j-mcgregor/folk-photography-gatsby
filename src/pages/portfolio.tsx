@@ -3,6 +3,7 @@ import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 
 import Layout from '../components/Layout'
+import GalleryContainer from '../components/pages/gallery/GalleryContainer'
 import SEO from '../components/SEO'
 
 export const query = graphql`
@@ -22,6 +23,17 @@ export const query = graphql`
                             image {
                                 url
                             }
+                            caption {
+                                raw
+                            }
+                            alt_text {
+                                raw
+                            }
+                        }
+                        primary {
+                            album {
+                                raw
+                            }
                         }
                     }
                 }
@@ -29,6 +41,28 @@ export const query = graphql`
         }
     }
 `
+
+export interface PortfoliImageProps {
+    alt_text: {
+        raw: RichTextBlock[]
+    }
+    caption: {
+        raw: RichTextBlock[]
+    }
+    image: {
+        url: string
+    }
+}
+
+interface PortfolioPageBodyProps {
+    id: string
+    items: PortfoliImageProps[]
+    primary: {
+        album: {
+            raw: RichTextBlock[]
+        }
+    }
+}
 
 interface PortfolioPageProps {
     data: {
@@ -40,6 +74,7 @@ interface PortfolioPageProps {
                 description: {
                     raw: RichTextBlock[]
                 }
+                body: PortfolioPageBodyProps[]
             }
         }
     }
@@ -47,13 +82,15 @@ interface PortfolioPageProps {
 
 const PortfolioPage: React.FC<PortfolioPageProps> = ({ data: { prismicGallery } }) => {
     const {
-        data: { title, description },
+        data: { title, description, body },
     } = prismicGallery
+
+    const allImages = body.flatMap(b => b.items)
 
     return (
         <Layout>
             <SEO title="Portfolio" />
-            <div className="about flex flex-column">
+            <div className="portfolio flex flex-column">
                 {title?.raw && <RichText render={title.raw} />}
                 {description?.raw && (
                     <div className="description">
@@ -61,6 +98,7 @@ const PortfolioPage: React.FC<PortfolioPageProps> = ({ data: { prismicGallery } 
                     </div>
                 )}
             </div>
+            {allImages?.length && <GalleryContainer images={allImages} />}
         </Layout>
     )
 }

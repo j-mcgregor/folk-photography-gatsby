@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner should render 1`] = `
+<body>
+  <div>
+    <div
+      class="text-center pb3 pt5 px2"
+    />
+  </div>
+</body>
+`;

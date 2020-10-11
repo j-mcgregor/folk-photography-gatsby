@@ -5,9 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import * as React from 'react'
 
-interface LinkProps {
+export interface LinkProps {
     content: string
     to: string
+    subnav?: LinkProps[]
 }
 
 interface SideNavProps {
@@ -70,9 +71,17 @@ const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
                 <Link to="/">{title}</Link>
             </h4>
             {options.map(nav => (
-                <Link key={nav.to.replace(/ /g, '-')} to={nav.to}>
-                    {nav.content}
-                </Link>
+                <>
+                    <Link key={nav.to.replace(/ /g, '-')} to={nav.to}>
+                        {nav.content}
+                    </Link>
+                    {window.location.pathname.startsWith('/portfolio') &&
+                        nav.subnav?.map(sub => (
+                            <Link key={sub.to.replace(/ /g, '-')} to={sub.to} className="pl1">
+                                <small>{sub.content}</small>
+                            </Link>
+                        ))}
+                </>
             ))}
             <div className="sidenav-footer">
                 <div className="social-icons flex flex-column flex-center">

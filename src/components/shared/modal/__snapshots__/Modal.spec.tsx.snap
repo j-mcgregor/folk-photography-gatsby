@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal should show display: "block" when isOpen is true 1`] = `
+<body>
+  <div>
+    <div
+      class="modal"
+      style="display: block;"
+    >
+      <span
+        class="close"
+        data-testid="close"
+      >
+        ×
+      </span>
+      <img
+        class="modal-content"
+        src="http://fillmurrary.com/500/500"
+      />
+      <div
+        class="caption"
+      />
+    </div>
+  </div>
+</body>
+`;
+
+exports[`Modal should show display: "none" when isOpen is false 1`] = `
+<body>
+  <div>
+    <div
+      class="modal"
+      style="display: none;"
+    >
+      <span
+        class="close"
+        data-testid="close"
+      >
+        ×
+      </span>
+      <img
+        class="modal-content"
+        src="http://fillmurrary.com/500/500"
+      />
+      <div
+        class="caption"
+      />
+    </div>
+  </div>
+</body>
+`;

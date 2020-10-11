@@ -10,7 +10,7 @@ import 'flexboxgrid2/flexboxgrid2.css'
 import { graphql, StaticQuery } from 'gatsby'
 import * as React from 'react'
 
-import SideNav from './SideNav'
+import SideNav, { LinkProps } from './SideNav'
 
 const Layout = (props: LayoutProps) => (
     <StaticQuery
@@ -37,6 +37,20 @@ const Layout = (props: LayoutProps) => (
                         }
                     }
                 }
+                prismicGallery {
+                    data {
+                        body {
+                            ... on PrismicGalleryBodyImageGallery {
+                                id
+                                primary {
+                                    album {
+                                        text
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 file(
                     sourceInstanceName: { eq: "images" }
                     relativePath: { eq: "folk-photography-logo.png" }
@@ -54,6 +68,14 @@ const Layout = (props: LayoutProps) => (
             }
         `}
         render={data => {
+            const subnav: LinkProps[] = data.prismicGallery.data.body?.map((s: any) => {
+                const nav: LinkProps = {
+                    to: `/portfolio/${s.id}`,
+                    content: s.primary.album.text,
+                }
+                return nav
+            })
+            console.log(subnav)
             return (
                 <div className="main-container">
                     <SideNav
@@ -67,6 +89,7 @@ const Layout = (props: LayoutProps) => (
                             {
                                 to: '/portfolio',
                                 content: 'Portfolio',
+                                subnav,
                             },
                             {
                                 to: '/contact',
