@@ -37,12 +37,28 @@ const Layout = (props: LayoutProps) => (
                         }
                     }
                 }
+                file(
+                    sourceInstanceName: { eq: "images" }
+                    relativePath: { eq: "folk-photography-logo.png" }
+                ) {
+                    childImageSharp {
+                        fixed(width: 600, height: 600) {
+                            base64
+                            width
+                            height
+                            src
+                            srcSet
+                        }
+                    }
+                }
             }
         `}
         render={data => {
+            console.log(data)
             return (
                 <div className="main-container">
                     <SideNav
+                        logo={data.file?.childImageSharp.fixed.src}
                         title={data.site.siteMetadata.title}
                         options={[
                             {

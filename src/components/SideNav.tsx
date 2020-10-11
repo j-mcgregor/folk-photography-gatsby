@@ -11,6 +11,7 @@ interface LinkProps {
 }
 
 interface SideNavProps {
+    logo?: string
     title: string
     options: LinkProps[]
     links: ContactMethod[]
@@ -61,9 +62,10 @@ const Iconised = ({ name, url }: { name: string; url: string }) => {
     }
 }
 
-const SideNav: React.FC<SideNavProps> = ({ title, options, links }) => {
+const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
     return (
         <div className="sidenav">
+            {logo && <img src={logo} alt="logo" style={{ width: '100%' }} />}
             <h4>
                 <Link to="/">{title}</Link>
             </h4>
