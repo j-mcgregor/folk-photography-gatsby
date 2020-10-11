@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 
 import TextArea from '../form/TextArea'
 import TextInput from '../form/TextInput'
@@ -38,22 +39,23 @@ const Form = () => {
     const [loading, setLoading] = React.useState<boolean>(false)
 
     const encode = (data: any) => {
-        const formData = new FormData()
-        Object.keys(data).forEach(k => {
-            formData.append(k, data[k])
-        })
-        return formData
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+            .join('&')
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setLoading(true)
         const data = { 'form-name': formName, name, email, message }
+        const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
 
         try {
-            const res = await fetch('/', {
+            const res = await axios({
                 method: 'POST',
-                body: encode(data),
+                url: 'https://folk-photography.netlify.app/',
+                data: encode({ 'form-name': 'contact-form', ...data }),
+                headers,
             })
 
             if (res.status >= 200 || res.status < 300) {
