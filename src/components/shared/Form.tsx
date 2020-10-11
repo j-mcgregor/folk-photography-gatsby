@@ -29,7 +29,7 @@ const StyledLoadingOverlay = styled.div`
     justify-content: center;
 `
 
-const formName = 'contact'
+const formName = 'contact-form'
 
 const Form = () => {
     const [name, setName] = React.useState<string>('')
@@ -48,13 +48,14 @@ const Form = () => {
         e.preventDefault()
         setLoading(true)
         const data = { 'form-name': formName, name, email, message }
+        console.log(encode(data))
         const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
 
         try {
             const res = await axios({
                 method: 'POST',
                 url: 'https://folk-photography.netlify.app/',
-                data: encode({ 'form-name': 'contact-form', ...data }),
+                data: encode(data),
                 headers,
             })
 
@@ -88,10 +89,10 @@ const Form = () => {
             )}
             <div className="mb2">
                 <TextInput
-                    label="Nme"
+                    label="Name"
                     placeholder="Your name"
                     type="text"
-                    name={name}
+                    name="Name"
                     value={name}
                     onChange={e => setName(e.currentTarget.value)}
                     classNames={['my2']}
@@ -100,7 +101,7 @@ const Form = () => {
                     label="Email"
                     placeholder="Your email"
                     type="email"
-                    name={email}
+                    name="Email"
                     value={email}
                     onChange={e => setEmail(e.currentTarget.value)}
                     classNames={['my2']}
@@ -108,7 +109,7 @@ const Form = () => {
                 <TextArea
                     label="Message"
                     placeholder="Message"
-                    name={message}
+                    name="Message"
                     value={message}
                     onChange={e => setMessage(e.currentTarget.value)}
                 />
