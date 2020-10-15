@@ -40,7 +40,7 @@ module.exports = {
         {
             resolve: 'gatsby-source-prismic',
             options: {
-                repositoryName: 'folk-photography',
+                repositoryName: 'folkphotography',
                 schemas: {
                     landing: require('./src/schemas/landing.json'),
                     contact: require('./src/schemas/contact.json'),
