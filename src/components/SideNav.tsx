@@ -66,6 +66,8 @@ const Iconised = ({ name, url }: { name: string; url: string }) => {
 const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
     const [showSubNav, setShowSubNav] = React.useState<boolean>(false)
 
+    const isPortfolio = window.location.pathname.startsWith('/portfolio')
+
     return (
         <div className="sidenav">
             {logo && <img src={logo} alt="logo" style={{ width: '100%' }} />}
@@ -89,11 +91,13 @@ const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
                         )}
                     </span>
                     {showSubNav &&
-                        nav.subnav?.map(sub => (
-                            <Link key={sub.to.replace(/ /g, '-')} to={sub.to} className="pl1">
-                                <small>{sub.content}</small>
-                            </Link>
-                        ))}
+                        nav.subnav?.map(sub => {
+                            return (
+                                <Link key={sub.to} to={sub.to} className="pl1">
+                                    <small>{sub.content}</small>
+                                </Link>
+                            )
+                        })}
                 </>
             ))}
             <div className="sidenav-footer">

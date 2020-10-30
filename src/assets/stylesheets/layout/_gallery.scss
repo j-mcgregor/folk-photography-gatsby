@@ -1,7 +1,8 @@
+.album-container,
 .gallery-container {
+    width: 95%;
     display: flex;
     flex-wrap: wrap;
-    width: $width-lg;
     margin: auto;
 
     .image-container {

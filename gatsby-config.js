@@ -46,6 +46,7 @@ module.exports = {
                     contact: require('./src/schemas/contact.json'),
                     gallery: require('./src/schemas/gallery.json'),
                     about: require('./src/schemas/about.json'),
+                    album: require('./src/schemas/album.json'),
                 },
             },
         },

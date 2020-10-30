@@ -1,7 +1,11 @@
+import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 
 export interface ModalProps {
     src: string
+    caption?: {
+        raw: RichTextBlock[]
+    }
     isOpen: boolean
     handleClose(): void
 }
@@ -54,7 +58,8 @@ export const Content: React.FC<ContentProps> = ({ children, onClick }) => {
     return <React.Fragment>{mapped}</React.Fragment>
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, src, handleClose }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, src, handleClose, caption }) => {
+    console.log(caption)
     return (
         <div className="modal" style={{ display: isOpen ? 'block' : 'none' }}>
             <span className="close" onClick={handleClose} data-testid="close">
@@ -63,7 +68,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, src, handleClose }) => {
             <Content onClick={handleClose}>
                 <img className="modal-content" src={src} />
             </Content>
-            <div className="caption"></div>
+            <div className="caption">{caption && <RichText render={caption.raw} />}</div>
         </div>
     )
 }
