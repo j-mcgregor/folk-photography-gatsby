@@ -5,11 +5,22 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // Query all Albums with their IDs and template data.
     const pages = await graphql(`
-        {
+        query AllPrismicAlbum {
             allPrismicAlbum {
                 nodes {
                     id
                     uid
+                    data {
+                        title {
+                            raw
+                        }
+                        main_image {
+                            url
+                        }
+                        description {
+                            raw
+                        }
+                    }
                 }
             }
         }

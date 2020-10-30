@@ -1,0 +1,56 @@
+{
+    "Main": {
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "uid"
+            }
+        },
+        "pricing": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading1",
+                "label": "Pricing"
+            }
+        },
+        "pricing_levels": {
+            "type": "Group",
+            "config": {
+                "fields": {
+                    "icon": {
+                        "type": "Image",
+                        "config": {
+                            "constraint": {
+                                "width": 400,
+                                "height": 400
+                            },
+                            "thumbnails": [],
+                            "label": "icon"
+                        }
+                    },
+                    "tier": {
+                        "type": "StructuredText",
+                        "config": {
+                            "single": "heading2",
+                            "label": "tier"
+                        }
+                    },
+                    "price": {
+                        "type": "Text",
+                        "config": {
+                            "label": "price"
+                        }
+                    },
+                    "included": {
+                        "type": "StructuredText",
+                        "config": {
+                            "multi": "list-item",
+                            "label": "included"
+                        }
+                    }
+                },
+                "label": "pricing levels"
+            }
+        }
+    }
+}

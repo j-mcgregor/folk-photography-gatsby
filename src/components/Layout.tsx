@@ -111,6 +111,10 @@ const Layout = (props: LayoutProps) => (
                                     subnav,
                                 },
                                 {
+                                    to: '/pricing',
+                                    content: 'Pricing',
+                                },
+                                {
                                     to: '/contact',
                                     content: 'Get in touch',
                                 },
