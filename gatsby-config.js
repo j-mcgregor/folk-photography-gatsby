@@ -26,6 +26,9 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sass`,
         {
+            resolve: `gatsby-plugin-scroll-reveal`,
+        },
+        {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 name: `gatsby-starter-default`,

@@ -13,43 +13,122 @@
                 "label": "Pricing"
             }
         },
-        "pricing_levels": {
-            "type": "Group",
+        "description": {
+            "type": "StructuredText",
             "config": {
-                "fields": {
-                    "icon": {
-                        "type": "Image",
-                        "config": {
-                            "constraint": {
-                                "width": 400,
-                                "height": 400
-                            },
-                            "thumbnails": [],
-                            "label": "icon"
+                "multi": "paragraph",
+                "label": "description"
+            }
+        },
+        "body": {
+            "type": "Slices",
+            "fieldset": "Slice zone",
+            "config": {
+                "labels": {
+                    "package_banner": [
+                        {
+                            "name": "package",
+                            "display": "package"
                         }
-                    },
-                    "tier": {
-                        "type": "StructuredText",
-                        "config": {
-                            "single": "heading2",
-                            "label": "tier"
-                        }
-                    },
-                    "price": {
-                        "type": "Text",
-                        "config": {
-                            "label": "price"
-                        }
-                    },
-                    "included": {
-                        "type": "StructuredText",
-                        "config": {
-                            "multi": "list-item",
-                            "label": "included"
-                        }
-                    }
+                    ],
+                    "detail_banner": []
                 },
-                "label": "pricing levels"
+                "choices": {
+                    "package_banner": {
+                        "type": "Slice",
+                        "fieldset": "Package",
+                        "description": "Photography package",
+                        "icon": "add_a_photo",
+                        "non-repeat": {
+                            "package": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "heading2",
+                                    "label": "Package",
+                                    "placeholder": "My title of banner"
+                                }
+                            },
+                            "description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph, list-item, o-list-item",
+                                    "label": "Description",
+                                    "placeholder": "My description"
+                                }
+                            },
+                            "price": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph, strong, em",
+                                    "label": "Price",
+                                    "placeholder": "Click Here"
+                                }
+                            },
+                            "image": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {},
+                                    "thumbnails": [],
+                                    "label": "Image"
+                                }
+                            }
+                        },
+                        "repeat": {},
+                        "display": "list"
+                    },
+                    "detail_banner": {
+                        "type": "Slice",
+                        "fieldset": "Detail banner",
+                        "description": "Banner with caption and button",
+                        "icon": "chrome_reader_mode",
+                        "non-repeat": {
+                            "image_banner": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {
+                                        "width": null,
+                                        "height": null
+                                    },
+                                    "thumbnails": [],
+                                    "label": "Image Banner"
+                                }
+                            },
+                            "title": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "heading2",
+                                    "label": "Title",
+                                    "placeholder": "My title of banner"
+                                }
+                            },
+                            "description": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph, strong, em, list-item",
+                                    "label": "Description",
+                                    "placeholder": "My description"
+                                }
+                            },
+                            "button_label": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                                    "label": "Button label",
+                                    "placeholder": "Click Here"
+                                }
+                            },
+                            "button_link": {
+                                "type": "Link",
+                                "config": {
+                                    "label": "Button Link",
+                                    "placeholder": "Select the link"
+                                }
+                            }
+                        },
+                        "repeat": {},
+                        "display": "list"
+                    }
+                }
             }
         }
     }
