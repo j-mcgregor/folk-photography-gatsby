@@ -27,6 +27,9 @@ module.exports = {
         `gatsby-plugin-sass`,
         {
             resolve: `gatsby-plugin-scroll-reveal`,
+            options: {
+                once: true,
+            },
         },
         {
             resolve: `gatsby-plugin-manifest`,

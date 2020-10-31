@@ -1,10 +1,28 @@
 import { graphql } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
+import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
+
+const AnimateIn = ({ threshold = 0.15, triggerOnce = false, ...remainingProps }) => {
+    const [ref, inView] = useInView({ threshold, triggerOnce })
+
+    return (
+        <div
+            ref={ref}
+            style={{
+                // adjust these as desired
+                transition: 'opacity 800ms, transform 800ms',
+                opacity: inView ? 1 : 0,
+                transform: `translateY(${inView ? 0 : 100}px)`,
+            }}
+            {...remainingProps}
+        />
+    )
+}
 
 interface PricingBodyProps {
     id: string
@@ -142,7 +160,7 @@ const S = {
         height: 500px;
         border: 1px solid grey;
     `,
-    PackageBanner: styled.div`
+    PackageBanner: styled(AnimateIn)`
         padding: 3em;
         height: 100vh;
         width: 100%;
@@ -183,7 +201,7 @@ const S = {
             }
         }
     `,
-    DetailBanner: styled.div`
+    DetailBanner: styled(AnimateIn)`
         height: 60vh;
         position: relative;
         display: flex;
@@ -203,21 +221,9 @@ const renderSlices = (slice: PricingBodyProps, i: number) => {
     switch (slice.slice_type) {
         case 'package_banner':
             return (
-                <S.PackageBanner className="package_banner">
-                    <img
-                        src={slice.primary.image.url}
-                        alt=""
-                        data-sal="slide-up"
-                        data-sal-duration="500"
-                        data-sal-delay="200"
-                        data-sal-easing="ease"
-                    />
-                    <S.TitleContainer
-                        left={i % 2 !== 0}
-                        data-sal="fade"
-                        data-sal-duration="300"
-                        data-sal-easing="ease"
-                    >
+                <S.PackageBanner className="package_banner" triggerOnce={true}>
+                    <img src={slice.primary.image.url} alt="" />
+                    <S.TitleContainer left={i % 2 !== 0}>
                         <RichText render={slice.primary.package.raw} />
                         <RichText render={slice.primary.price.raw} />
                         <RichText render={slice.primary.description.raw} />
@@ -226,7 +232,7 @@ const renderSlices = (slice: PricingBodyProps, i: number) => {
             )
         case 'detail_banner':
             return (
-                <S.DetailBanner className="detail_banner">
+                <S.DetailBanner className="detail_banner" triggerOnce={true}>
                     <img src={slice.primary.image_banner.url} alt="" />
                     <S.TitleContainer center>
                         <RichText render={slice.primary.title.raw} />
