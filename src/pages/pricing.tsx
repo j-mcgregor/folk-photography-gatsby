@@ -251,7 +251,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ data }) => {
             data: { pricing, description, body },
         },
     } = data
-    console.log(body[body.length - 1])
+
     return (
         <Layout>
             <SEO title="Pricing" />
@@ -259,7 +259,7 @@ const PricingPage: React.FC<PricingPageProps> = ({ data }) => {
                 <RichText render={pricing?.raw} />
                 <RichText render={description?.raw} />
             </S.PricingContainer>
-            {body.map(renderSlices)}
+            {body?.map(renderSlices)}
         </Layout>
     )
 }
