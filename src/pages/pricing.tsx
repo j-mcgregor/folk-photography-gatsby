@@ -1,8 +1,8 @@
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import { useInView } from 'react-intersection-observer'
-import styled from 'styled-components'
+import styled, { withTheme } from 'styled-components'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -132,8 +132,8 @@ export const query = graphql`
 `
 
 const S = {
-    PricingContainer: styled.div`
-        height: 60vh;
+    PricingContainer: styled.div<{ height?: string }>`
+        height: ${({ height }) => (height ? `${height}vh` : '60vh')};
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -180,25 +180,27 @@ const S = {
     TitleContainer: styled.div<{ left?: boolean; center?: boolean }>`
         position: absolute;
         background: ${({ theme }) => theme.palette.white};
-        padding: 3em 6em;
+        padding: 3em 4em;
         top: 50%;
+        max-width: 600px;
         ${({ left }) => (left ? { left: 0 } : { right: 0 })};
-        transform: translate(${({ left }) => (left ? '25%, -50%' : '-25%, -50%')});
+        transform: translate(${({ left }) => (left ? '0, -50%' : '10%, -50%')});
         text-align: ${({ left }) => (left ? 'left' : 'right')};
         text-align: center;
-        ${({ center }) => center && { left: 0, right: 0, transform: 'none', width: '60%', margin: 'auto' }}
+        ${({ center }) =>
+            center && { left: 0, right: 0, transform: 'translateY(50%)', width: '60%', margin: 'auto' }}
 
+        h2, p {
+            width: 100%;
+            margin: auto;
+            line-height: 1.8em;
+        }
         h2 {
-            font-size: 2em;
+            font-size: 1.2em;
         }
 
-        ul {
-            ${({ center }) => center && { fontSize: '0.8em' }}
-            list-style: none;
-            padding: 0;
-            li {
-                line-height: 2em;
-            }
+        p {
+            font-size: 0.8em;
         }
     `,
     DetailBanner: styled(AnimateIn)`
@@ -207,13 +209,19 @@ const S = {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 600px;
+        margin-bottom: 200px;
 
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
+    `,
+    Button: styled.a`
+        margin: 5em auto;
+        padding: 1em 3em;
+        border: 1px solid ${({ theme }) => theme.palette.center};
+        color: ${({ theme }) => theme.palette.center};
     `,
 }
 
@@ -260,8 +268,12 @@ const PricingPage: React.FC<PricingPageProps> = ({ data }) => {
                 <RichText render={description?.raw} />
             </S.PricingContainer>
             {body?.map(renderSlices)}
+            <S.PricingContainer className="container text-center" height="20">
+                <S.Button href="/contact">Contact Us</S.Button>
+            </S.PricingContainer>
         </Layout>
     )
 }
 
-export default PricingPage
+// @ts-ignore
+export default withTheme(PricingPage)
