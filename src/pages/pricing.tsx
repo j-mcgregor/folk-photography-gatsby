@@ -145,6 +145,21 @@ const S = {
         p {
             line-height: 2em;
         }
+
+        @media only screen and (max-width: ${({ theme }) => theme.width.xl}) {
+            padding: 3em;
+            height: auto;
+        }
+        @media only screen and (max-width: ${({ theme }) => theme.width.md}) {
+            padding: 1em;
+            font-size: 16px;
+            width: 80%;
+        }
+        @media only screen and (max-width: ${({ theme }) => theme.width.sm}) {
+            padding: 10px;
+            font-size: 14px;
+            width: 100%;
+        }
     `,
     CardContainer: styled.div`
         display: flex;
@@ -176,6 +191,17 @@ const S = {
             width: 70%;
             object-fit: contain;
         }
+
+        @media only screen and (max-width: ${({ theme }) => theme.width.xl}) {
+            padding: 0;
+            height: auto;
+            flex-direction: column;
+
+            img {
+                position: relative;
+                width: 100%;
+            }
+        }
     `,
     TitleContainer: styled.div<{ left?: boolean; center?: boolean }>`
         position: absolute;
@@ -202,6 +228,17 @@ const S = {
         p {
             font-size: 0.8em;
         }
+
+        @media only screen and (max-width: ${({ theme }) => theme.width.xl}) {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform: none;
+            width: 80%;
+        }
+        @media only screen and (max-width: ${({ theme }) => theme.width.sm}) {
+            width: 100%;
+        }
     `,
     DetailBanner: styled(AnimateIn)`
         height: 60vh;
@@ -215,6 +252,15 @@ const S = {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        @media only screen and (max-width: ${({ theme }) => theme.width.xl}) {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform: none;
+            height: auto;
+            margin: 0;
         }
     `,
     Button: styled.a`

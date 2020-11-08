@@ -68,16 +68,18 @@ const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
 
     return (
         <div className="sidenav">
-            {logo && <img src={logo} alt="logo" style={{ width: '100%' }} />}
+            {logo && (
+                <Link to="/">
+                    <img src={logo} alt="logo" className="logo" />
+                </Link>
+            )}
+            {/* HIDE ON SMALL */}
             <h4>
                 <Link to="/">{title}</Link>
             </h4>
             {options.map(nav => (
                 <>
-                    <span
-                        className="flex flex-justify-between flex-align-center"
-                        key={nav.to.replace(/ /g, '-')}
-                    >
+                    <span className="link-item" key={nav.to.replace(/ /g, '-')}>
                         <Link to={nav.to}>{nav.content}</Link>
                         {nav.content === 'Portfolio' && (
                             <FontAwesomeIcon
@@ -88,16 +90,20 @@ const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
                             />
                         )}
                     </span>
-                    {showSubNav &&
-                        nav.subnav?.map(sub => {
-                            return (
-                                <Link key={sub.to} to={sub.to} className="pl1">
-                                    <small>{sub.content}</small>
-                                </Link>
-                            )
-                        })}
+                    {showSubNav && (
+                        <div className="subnav-container">
+                            {nav.subnav?.map(sub => {
+                                return (
+                                    <Link key={sub.to} to={sub.to} className="pl1">
+                                        <small>{sub.content}</small>
+                                    </Link>
+                                )
+                            })}
+                        </div>
+                    )}
                 </>
             ))}
+            {/* HIDE ON SMALL */}
             <div className="sidenav-footer">
                 <div className="social-icons flex flex-column flex-center">
                     {links?.map(c => (

@@ -52,7 +52,7 @@ interface AlbumPageType {
 
 const S = {
     AlbumPage: styled.div`
-        height: 60vh;
+        /* height: 60vh; */
     `,
 
     AlbumHeader: styled.div`
@@ -78,6 +78,22 @@ const S = {
                 text-transform: uppercase;
             }
         }
+
+        @media only screen and (max-width: ${({ theme }) => theme.width.md}) {
+            height: auto;
+            .title-section {
+                width: 100%;
+                h1 {
+                    padding: 0.2em 2em;
+                    font-size: 2em;
+                    text-transform: uppercase;
+                }
+
+                p {
+                    font-size: 0.8em;
+                }
+            }
+        }
     `,
 }
 
@@ -88,14 +104,11 @@ const Album: React.FC<AlbumPageType> = ({ data }) => {
         <Layout>
             <S.AlbumPage className="container-fluid">
                 <div className="row">
-                    <S.AlbumHeader className="col-md-7 p3">
+                    <S.AlbumHeader className="col-md-12 p3">
                         <div className="title-section">
                             {album.title && <RichText render={album.title.raw} />}
                             {album.description && <RichText render={album.description.raw} />}
                         </div>
-                    </S.AlbumHeader>
-                    <S.AlbumHeader className="col-md-5">
-                        <img src={album.main_image.url} alt="" />
                     </S.AlbumHeader>
                 </div>
                 {album.body[0]?.items && <AlbumContainer images={album.body[0].items} />}

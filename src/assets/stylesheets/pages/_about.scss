@@ -10,8 +10,25 @@
     }
 
     img {
-        border-style: double;
         border-width: 6px;
         border-color: $light-grey-20;
+    }
+}
+
+@media only screen and (max-width: $width-lg) {
+    .about {
+        padding: 1em;
+        .description {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: $width-md) {
+    .about,
+    .portfolio {
+        .description {
+            font-size: 0.8em;
+        }
     }
 }

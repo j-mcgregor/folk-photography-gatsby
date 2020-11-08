@@ -36,6 +36,12 @@ export const theme = {
         light: (a: string) => `rgba(245, 243, 240, ${a})`,
         white: (a: string) => `rgba(255, 255, 255, ${a})`,
     },
+    width: {
+        xl: '1200px',
+        lg: '992px',
+        md: '768px',
+        sm: '576px',
+    },
 }
 
 const Layout = (props: LayoutProps) => (
