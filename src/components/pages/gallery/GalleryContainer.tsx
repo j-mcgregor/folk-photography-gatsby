@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-import createKey from '../../../utils/createKey'
-import { chunkArray } from '../../../utils/chunkArray'
-import { GridStyle } from '../../../types/enums'
-import Modal from '../../shared/modal/Modal'
-import { useKeyPress } from '../../../utils/hooks/useKeyPress'
-import { GalleryUtils } from '../../../utils/helpers/gallery'
+
 import { PortfoliImageProps } from '../../../pages/portfolio'
+import { GridStyle } from '../../../types/enums'
+import { chunkArray } from '../../../utils/chunkArray'
+import createKey from '../../../utils/createKey'
+import { GalleryUtils } from '../../../utils/helpers/gallery'
+import { useKeyPress } from '../../../utils/hooks/useKeyPress'
+import Modal from '../../shared/modal/Modal'
 
 interface GalleryContainerProps {
     images: PortfoliImageProps[]

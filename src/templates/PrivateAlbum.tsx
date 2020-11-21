@@ -1,15 +1,15 @@
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { graphql } from 'gatsby'
+import * as moment from 'moment'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
-import TextInput from '../components/form/TextInput'
+
 import Layout from '../components/Layout'
 import AlbumContainer from '../components/pages/gallery/AlbumContainer'
-import { AnimateIn, AnimateOut } from '../pages/pricing'
+import { AnimateOut } from '../pages/pricing'
 import { AlbumImageProps } from './Album'
-import * as moment from 'moment'
 
 export interface AlbumPageNodeBodyProps {
     id: string
@@ -108,14 +108,11 @@ export const Input = styled(AnimateOut)<{ isMatch?: boolean }>`
 const PrivateAlbum: React.FC<PrivateAlbumPageType> = ({ data }) => {
     const { data: album, uid } = data.prismicPrivateAlbum
     const [password, setPassword] = React.useState('')
-    const isLoggedIn = window.localStorage.getItem(uid) === 'true'
-
-    console.log(data)
 
     const isPasswordMatch = password === album.password
 
     React.useEffect(() => {
-        if (isPasswordMatch === true) {
+        if (typeof window !== 'undefined' && isPasswordMatch === true) {
             window.localStorage.setItem(uid, `${isPasswordMatch}`)
         }
     }, [isPasswordMatch])
@@ -151,9 +148,7 @@ const PrivateAlbum: React.FC<PrivateAlbumPageType> = ({ data }) => {
                         isMatch={isPasswordMatch}
                     />
                 </div>
-                {isPasswordMatch && (
-                    <>{album.body[0]?.items && <AlbumContainer images={album.body[0].items} />}</>
-                )}
+                {isPasswordMatch && album.body[0]?.items && <AlbumContainer images={album.body[0].items} />}
             </div>
         </Layout>
     )
