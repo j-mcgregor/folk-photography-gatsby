@@ -55,6 +55,7 @@ module.exports = {
                     about: require('./src/schemas/about.json'),
                     pricing: require('./src/schemas/pricing.json'),
                     album: require('./src/schemas/album.json'),
+                    private_album: require('./src/schemas/private_album.json'),
                 },
             },
         },

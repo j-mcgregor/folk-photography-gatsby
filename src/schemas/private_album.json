@@ -1,0 +1,80 @@
+{
+    "Main": {
+        "uid": {
+            "type": "UID",
+            "config": {
+                "label": "album-id"
+            }
+        },
+        "password": {
+            "type": "Text",
+            "config": {
+                "label": "password"
+            }
+        },
+        "title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading1",
+                "label": "Title"
+            }
+        },
+        "description": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph",
+                "label": "Description"
+            }
+        },
+        "date": {
+            "type": "Date",
+            "config": {
+                "label": "Date"
+            }
+        },
+        "download_link": {
+            "type": "Link",
+            "config": {
+                "allowTargetBlank": true,
+                "label": "Download Link"
+            }
+        },
+        "body": {
+            "type": "Slices",
+            "fieldset": "Slice zone",
+            "config": {
+                "labels": {},
+                "choices": {
+                    "image_gallery": {
+                        "type": "Slice",
+                        "fieldset": "Image Gallery",
+                        "description": "Image Gallery with a title and a caption for each image",
+                        "icon": "photo_library",
+                        "non-repeat": {},
+                        "repeat": {
+                            "image_captions": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph",
+                                    "label": "Image captions",
+                                    "placeholder": "Images captions"
+                                }
+                            },
+                            "gallery_image": {
+                                "type": "Image",
+                                "config": {
+                                    "constraint": {
+                                        "width": null,
+                                        "height": null
+                                    },
+                                    "thumbnails": [],
+                                    "label": "gallery_image"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

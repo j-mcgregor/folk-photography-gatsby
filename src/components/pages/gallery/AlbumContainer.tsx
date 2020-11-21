@@ -13,21 +13,6 @@ interface AlbumContainerProps {
 }
 
 const AlbumContainer: React.FC<AlbumContainerProps> = ({ images }) => {
-    const [gridStyle, setGridStyle] = React.useState<GridStyle>(GridStyle.COL)
-
-    React.useEffect(() => {
-        const item = window.localStorage.getItem('GridStyle')
-
-        switch (item) {
-            case 'ROW':
-                setGridStyle(GridStyle.ROW)
-                break
-            default:
-                setGridStyle(GridStyle.COL)
-                break
-        }
-    }, [])
-
     /**
      * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
      * @keyEvent left / right
@@ -90,30 +75,6 @@ const AlbumContainer: React.FC<AlbumContainerProps> = ({ images }) => {
 
     /**
      * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-     * @version 2
-     * @name : EQUAL HEIGHT ROW
-     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-     */
-
-    const row =
-        images.length &&
-        images
-            .map(
-                (img: AlbumImageProps, i: number) =>
-                    img.gallery_image.url && (
-                        <div className="image-container" key={createKey('key', i)}>
-                            <img
-                                src={img.gallery_image.url}
-                                onClick={handleImageClick}
-                                data-testid={`gallery-img-${i}`}
-                            />
-                        </div>
-                    )
-            )
-            .filter(i => i)
-
-    /**
-     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
      * @version 3
      * @name : EQUAL WIDTH COLUMN
      * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -121,8 +82,8 @@ const AlbumContainer: React.FC<AlbumContainerProps> = ({ images }) => {
 
     const col = chunkArray<AlbumImageProps>(images, 3)
         .map((imgArr: AlbumImageProps[], index: number) => {
-            const imgs = imgArr.map((img: AlbumImageProps, i: number) => {
-                return (
+            const imgs = imgArr.map((img: AlbumImageProps, i: number) =>
+                img.gallery_image?.url ? (
                     <div className="image-container" key={createKey('key', i)}>
                         <img
                             src={img.gallery_image.url}
@@ -130,8 +91,9 @@ const AlbumContainer: React.FC<AlbumContainerProps> = ({ images }) => {
                             data-testid={`gallery-img-${i}`}
                         />
                     </div>
-                )
-            })
+                ) : null
+            )
+
             return (
                 <div key={createKey('key', index)} className="image-column">
                     {imgs}
@@ -140,12 +102,13 @@ const AlbumContainer: React.FC<AlbumContainerProps> = ({ images }) => {
         })
         .filter(i => i)
 
+    console.log(selected)
+
     return (
-        <div className="album-container pb3" data-testid="gallery-container">
-            {gridStyle === GridStyle.COL ? col : null}
-            {gridStyle === GridStyle.ROW ? row : null}
+        <div className="gallery-container pb3" data-testid="gallery-container">
+            {col}
             <Modal
-                src={selected?.gallery_image.url}
+                src={selected?.gallery_image?.url}
                 caption={selected?.image_captions}
                 isOpen={modalOpen}
                 handleClose={handleCloseModal}

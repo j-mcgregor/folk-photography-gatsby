@@ -9,6 +9,9 @@ export interface AlbumImageProps {
     gallery_image: {
         url: string
     }
+    image: {
+        url: string
+    }
     image_captions: {
         raw: RichTextBlock[]
     }

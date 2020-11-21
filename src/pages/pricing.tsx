@@ -7,7 +7,7 @@ import styled, { withTheme } from 'styled-components'
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
 
-const AnimateIn = ({ threshold = 0.15, triggerOnce = false, ...remainingProps }) => {
+export const AnimateIn = ({ threshold = 0.15, triggerOnce = false, transition = 800, ...remainingProps }) => {
     const [ref, inView] = useInView({ threshold, triggerOnce })
 
     return (
@@ -15,10 +15,29 @@ const AnimateIn = ({ threshold = 0.15, triggerOnce = false, ...remainingProps })
             ref={ref}
             style={{
                 // adjust these as desired
-                transition: 'opacity 800ms, transform 800ms',
+                transition: `opacity ${transition}ms, transform ${transition}ms`,
                 opacity: inView ? 1 : 0,
                 transform: `translateY(${inView ? 0 : 100}px)`,
             }}
+            {...remainingProps}
+        />
+    )
+}
+
+export const AnimateOut = ({ threshold = 0.15, triggerOnce = false, isMatch = false, ...remainingProps }) => {
+    const [ref, inView] = useInView({ threshold, triggerOnce })
+
+    return (
+        <input
+            ref={ref}
+            {...(isMatch && {
+                style: {
+                    // adjust these as desired
+                    transition: 'opacity 800ms, transform 800ms',
+                    opacity: inView ? 0 : 1,
+                    transform: `translateY(${inView ? 100 : 0}px)`,
+                },
+            })}
             {...remainingProps}
         />
     )

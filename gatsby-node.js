@@ -5,7 +5,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // Query all Albums with their IDs and template data.
     const pages = await graphql(`
-        query AllPrismicAlbum {
+        {
             allPrismicAlbum {
                 nodes {
                     id
@@ -23,6 +23,20 @@ exports.createPages = async ({ graphql, actions }) => {
                     }
                 }
             }
+            allPrismicPrivateAlbum {
+                nodes {
+                    id
+                    uid
+                    data {
+                        title {
+                            raw
+                        }
+                        description {
+                            raw
+                        }
+                    }
+                }
+            }
         }
     `)
 
@@ -31,6 +45,15 @@ exports.createPages = async ({ graphql, actions }) => {
         createPage({
             path: `/portfolio/${node.uid}`,
             component: path.resolve(__dirname, 'src/templates/Album.tsx'),
+            context: {
+                id: node.id,
+            },
+        })
+    })
+    pages.data.allPrismicPrivateAlbum.nodes.forEach(node => {
+        createPage({
+            path: `/album/${node.uid}`,
+            component: path.resolve(__dirname, 'src/templates/PrivateAlbum.tsx'),
             context: {
                 id: node.id,
             },
