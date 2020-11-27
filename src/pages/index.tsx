@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import Banner from '../components/pages/landing/Banner'
@@ -73,6 +74,14 @@ interface IndexPageProps {
     }
 }
 
+const StyledHomePage = styled.div`
+    font-weight: bold;
+    p {
+        line-height: 2em;
+        text-align: justify;
+    }
+`
+
 const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } }) => {
     const { primary_text, secondary_text, about, background_image } = prismicLanding.data
 
@@ -82,14 +91,14 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
         <Layout>
             <SEO title="Home" />
             {background_image?.url && (
-                <>
+                <StyledHomePage>
                     <Hero logo={logo} backgroundImage={background_image.url} />
                     <Banner>
                         {primary_text && <RichText render={primary_text.raw} />}
                         {secondary_text && <RichText render={secondary_text.raw} />}
                         {about && <RichText render={about.raw} />}
                     </Banner>
-                </>
+                </StyledHomePage>
             )}
         </Layout>
     )

@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -47,21 +48,30 @@ interface AboutPageProps {
     }
 }
 
+const StyledAboutPage = styled.div`
+    .description {
+        img {
+            margin-top: 1em;
+            width: 50%;
+        }
+    }
+`
+
 const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
     const { title, description, main_image } = data.prismicAbout.data
 
     return (
         <Layout>
             <SEO title="About" />
-            <div className="about flex flex-column">
+            <StyledAboutPage className="about flex flex-column">
                 {title?.raw && <RichText render={title.raw} />}
                 {description?.raw && (
                     <div className="description text-justify">
                         <RichText render={description.raw} />
-                        {main_image && <img src={main_image.url} alt="Logo" style={{ width: '100%' }} />}
+                        {main_image && <img src={main_image.url} alt="Logo" />}
                     </div>
                 )}
-            </div>
+            </StyledAboutPage>
         </Layout>
     )
 }
