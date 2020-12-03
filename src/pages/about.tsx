@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
+import Img, { FluidObject } from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
@@ -19,6 +20,12 @@ export const query = graphql`
                     dimensions {
                         width
                         height
+                    }
+                    fluid {
+                        src
+                        srcSet
+                        aspectRatio
+                        sizes
                     }
                 }
                 description {
@@ -39,6 +46,7 @@ interface AboutPageProps {
                 main_image: {
                     alt: string
                     url: string
+                    fluid: FluidObject
                 }
                 description: {
                     raw: RichTextBlock[]
@@ -50,7 +58,7 @@ interface AboutPageProps {
 
 const StyledAboutPage = styled.div`
     .description {
-        img {
+        .gatsby-image-wrapper {
             margin-top: 1em;
             width: 50%;
         }
@@ -64,13 +72,11 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
         <Layout>
             <SEO title="About" />
             <StyledAboutPage className="about flex flex-column">
-                {title?.raw && <RichText render={title.raw} />}
-                {description?.raw && (
-                    <div className="description text-justify">
-                        <RichText render={description.raw} />
-                        {main_image && <img src={main_image.url} alt="Logo" />}
-                    </div>
-                )}
+                <RichText render={title.raw} />
+                <div className="description text-justify">
+                    <RichText render={description.raw} />
+                    <Img fluid={main_image.fluid} alt="Logo" />
+                </div>
             </StyledAboutPage>
         </Layout>
     )

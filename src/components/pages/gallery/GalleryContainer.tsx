@@ -1,4 +1,5 @@
 import * as React from 'react'
+import Img from 'gatsby-image'
 
 import { PortfoliImageProps } from '../../../pages/portfolio'
 import { GridStyle } from '../../../types/enums'
@@ -13,21 +14,6 @@ interface GalleryContainerProps {
 }
 
 const GalleryContainer: React.FC<GalleryContainerProps> = ({ images }) => {
-    const [gridStyle, setGridStyle] = React.useState<GridStyle>(GridStyle.COL)
-
-    React.useEffect(() => {
-        const item = window.localStorage.getItem('GridStyle')
-
-        switch (item) {
-            case 'ROW':
-                setGridStyle(GridStyle.ROW)
-                break
-            default:
-                setGridStyle(GridStyle.COL)
-                break
-        }
-    }, [])
-
     /**
      * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
      * @keyEvent left / right
@@ -72,8 +58,10 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ images }) => {
      */
 
     const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
+        console.log(e.currentTarget.dataset['img'])
         return images.filter((i, x) => {
-            if (i.image.url === e.currentTarget.src) {
+            console.log('url', i.image.url)
+            if (i.image.url === e.currentTarget.dataset['img']) {
                 // set the current selected image
                 setSelected(i)
                 // set the INDEX of the current image (important when cycling through the modal images)
@@ -90,30 +78,6 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ images }) => {
 
     /**
      * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-     * @version 2
-     * @name : EQUAL HEIGHT ROW
-     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-     */
-
-    const row =
-        images.length &&
-        images
-            .map(
-                (img: PortfoliImageProps, i: number) =>
-                    img.image.url && (
-                        <div className="image-container" key={createKey('key', i)}>
-                            <img
-                                src={img.image.url}
-                                onClick={handleImageClick}
-                                data-testid={`gallery-img-${i}`}
-                            />
-                        </div>
-                    )
-            )
-            .filter(i => i)
-
-    /**
-     * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
      * @version 3
      * @name : EQUAL WIDTH COLUMN
      * >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -123,12 +87,13 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ images }) => {
         .map((imgArr: PortfoliImageProps[], index: number) => {
             const imgs = imgArr.map((img: PortfoliImageProps, i: number) => {
                 return (
-                    <div className="image-container" key={createKey('key', i)}>
-                        <img
-                            src={img.image.url}
-                            onClick={handleImageClick}
-                            data-testid={`gallery-img-${i}`}
-                        />
+                    <div
+                        className="image-container"
+                        key={createKey('key', i)}
+                        onClick={handleImageClick}
+                        data-img={img.image?.url}
+                    >
+                        <Img fluid={img.image?.fluid} data-testid={`gallery-img-${i}`} />
                     </div>
                 )
             })
@@ -142,9 +107,8 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ images }) => {
 
     return (
         <div className="gallery-container pb3" data-testid="gallery-container">
-            {gridStyle === GridStyle.COL ? col : null}
-            {gridStyle === GridStyle.ROW ? row : null}
-            <Modal src={selected?.image.url} isOpen={modalOpen} handleClose={handleCloseModal} />
+            {col}
+            <Modal src={selected?.image?.fluid} isOpen={modalOpen} handleClose={handleCloseModal} />
         </div>
     )
 }

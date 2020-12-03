@@ -3,7 +3,7 @@ module.exports = {
     siteMetadata: {
         title: `Folk Photography`,
         description: `Real people. Real photos.`,
-        author: `@jmcgregor`,
+        author: `@folkphotography`,
         siteUrl: 'https://folk-photography.netlify.app/',
     },
     plugins: [
@@ -26,6 +26,8 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sass`,
         `gatsby-plugin-styled-components`,
+        'gatsby-plugin-sitemap',
+        'gatsby-plugin-robots-txt',
         {
             resolve: `gatsby-plugin-scroll-reveal`,
             options: {

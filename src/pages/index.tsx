@@ -3,6 +3,7 @@ import Img from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
+import { FixedObject, FluidObject } from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import Banner from '../components/pages/landing/Banner'
@@ -24,6 +25,12 @@ export const query = graphql`
                 }
                 background_image {
                     url
+                    fluid {
+                        src
+                        srcSet
+                        aspectRatio
+                        sizes
+                    }
                 }
             }
         }
@@ -57,18 +64,13 @@ interface IndexPageProps {
                 }
                 background_image: {
                     url: string
+                    fluid: FluidObject
                 }
             }
         }
         file: {
             childImageSharp: {
-                fixed: {
-                    height: number
-                    width: number
-                    base64: string
-                    src: string
-                    srcSet: string
-                }
+                fixed: FixedObject
             }
         }
     }
@@ -79,27 +81,26 @@ const StyledHomePage = styled.div`
     p {
         line-height: 2em;
         text-align: justify;
+        padding-right: 2em;
     }
 `
 
 const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } }) => {
     const { primary_text, secondary_text, about, background_image } = prismicLanding.data
 
-    const logo = file?.childImageSharp.fixed && <Img fixed={file.childImageSharp.fixed} alt="Logo" />
+    const logo = <Img fixed={file.childImageSharp?.fixed} alt="Logo" />
 
     return (
         <Layout>
             <SEO title="Home" />
-            {background_image?.url && (
-                <StyledHomePage>
-                    <Hero logo={logo} backgroundImage={background_image.url} />
-                    <Banner>
-                        {primary_text && <RichText render={primary_text.raw} />}
-                        {secondary_text && <RichText render={secondary_text.raw} />}
-                        {about && <RichText render={about.raw} />}
-                    </Banner>
-                </StyledHomePage>
-            )}
+            <StyledHomePage>
+                <Hero logo={logo} backgroundImage={background_image.fluid} />
+                <Banner>
+                    {primary_text && <RichText render={primary_text.raw} />}
+                    {secondary_text && <RichText render={secondary_text.raw} />}
+                    {about && <RichText render={about.raw} />}
+                </Banner>
+            </StyledHomePage>
         </Layout>
     )
 }

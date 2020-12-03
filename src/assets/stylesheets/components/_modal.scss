@@ -18,7 +18,16 @@
     .modal-content {
         margin: auto;
         display: block;
-        height: 80%;
+        width: 100%;
+        max-width: 600px;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            aspect-ratio: 1;
+        }
     }
 
     /* Caption of Modal Image */

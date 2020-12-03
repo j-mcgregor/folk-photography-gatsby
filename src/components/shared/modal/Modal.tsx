@@ -1,8 +1,9 @@
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
+import Img, { FluidObject } from 'gatsby-image'
 
 export interface ModalProps {
-    src: string
+    src: FluidObject
     caption?: {
         raw: RichTextBlock[]
     }
@@ -27,7 +28,7 @@ export const Content: React.FC<ContentProps> = ({ children, onClick }) => {
             // for each ref (child)
             const isOutside = refs.every(ref => {
                 // https://stackoverflow.com/questions/43842057/detect-if-click-was-inside-react-component-or-not-in-typescript
-                return ref && ref.current && !ref.current.contains(e.target as Node)
+                return ref && ref.current && !ref.current.contains?.(e.target as Node)
             })
 
             if (isOutside) {
@@ -55,7 +56,7 @@ export const Content: React.FC<ContentProps> = ({ children, onClick }) => {
         )
     })
 
-    return <React.Fragment>{mapped}</React.Fragment>
+    return <>{mapped}</>
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, src, handleClose, caption }) => {
@@ -66,7 +67,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, src, handleClose, caption }) => {
                 &times;
             </span>
             <Content onClick={handleClose}>
-                <img className="modal-content" src={src} />
+                <Img className="modal-content" fluid={src} />
             </Content>
             <div className="caption">{caption && <RichText render={caption.raw} />}</div>
         </div>

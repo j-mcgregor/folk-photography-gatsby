@@ -1,16 +1,21 @@
 import { graphql } from 'gatsby'
+import { FluidObject } from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import AlbumContainer from '../components/pages/gallery/AlbumContainer'
+import GalleryContainer from '../components/pages/gallery/GalleryContainer'
+import { PortfoliImageProps } from '../pages/portfolio'
 
 export interface AlbumImageProps {
     gallery_image: {
         url: string
+        fluid: FluidObject
     }
     image: {
         url: string
+        fluid: FluidObject
     }
     image_captions: {
         raw: RichTextBlock[]
@@ -33,6 +38,7 @@ export interface AlbumsPageNodeProps {
         main_image: {
             alt: string
             url: string
+            fluid: FluidObject
         }
         description: {
             raw: RichTextBlock[]
@@ -103,18 +109,28 @@ const S = {
 const Album: React.FC<AlbumPageType> = ({ data }) => {
     const { data: album } = data.prismicAlbum
 
+    const allImages = album.body[0].items.map(b => {
+        return {
+            image: b.gallery_image,
+            alt_text: {
+                raw: [],
+            },
+            caption: b.image_captions,
+        } as PortfoliImageProps
+    })
+
     return (
         <Layout>
             <S.AlbumPage className="container-fluid">
                 <div className="row">
                     <S.AlbumHeader className="col-md-12 p3">
                         <div className="title-section">
-                            {album.title && <RichText render={album.title.raw} />}
-                            {album.description && <RichText render={album.description.raw} />}
+                            <RichText render={album.title.raw} />
+                            <RichText render={album.description.raw} />
                         </div>
                     </S.AlbumHeader>
                 </div>
-                {album.body[0]?.items && <AlbumContainer images={album.body[0].items} />}
+                {album.body[0]?.items && <GalleryContainer images={allImages} />}
             </S.AlbumPage>
         </Layout>
     )
@@ -134,6 +150,12 @@ export const query = graphql`
                 main_image {
                     url
                     alt
+                    fluid {
+                        src
+                        srcSet
+                        aspectRatio
+                        sizes
+                    }
                 }
                 body {
                     ... on PrismicAlbumBodyImageGallery {
@@ -142,6 +164,12 @@ export const query = graphql`
                         items {
                             gallery_image {
                                 url
+                                fluid {
+                                    src
+                                    srcSet
+                                    aspectRatio
+                                    sizes
+                                }
                             }
                             image_captions {
                                 raw

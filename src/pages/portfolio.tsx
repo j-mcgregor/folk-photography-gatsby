@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby'
+import { FluidObject } from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 
@@ -22,6 +23,12 @@ export const query = graphql`
                         items {
                             image {
                                 url
+                                fluid {
+                                    src
+                                    srcSet
+                                    aspectRatio
+                                    sizes
+                                }
                             }
                             caption {
                                 raw
@@ -51,6 +58,7 @@ export interface PortfoliImageProps {
     }
     image: {
         url: string
+        fluid: FluidObject
     }
 }
 

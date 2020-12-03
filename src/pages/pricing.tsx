@@ -1,28 +1,14 @@
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
+import { FluidObject } from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import { useInView } from 'react-intersection-observer'
-import styled, { withTheme } from 'styled-components'
+import styled from 'styled-components'
 
 import Layout from '../components/Layout'
 import SEO from '../components/SEO'
-
-export const AnimateIn = ({ threshold = 0.15, triggerOnce = false, transition = 800, ...remainingProps }) => {
-    const [ref, inView] = useInView({ threshold, triggerOnce })
-
-    return (
-        <div
-            ref={ref}
-            style={{
-                // adjust these as desired
-                transition: `opacity ${transition}ms, transform ${transition}ms`,
-                opacity: inView ? 1 : 0,
-                transform: `translateY(${inView ? 0 : 100}px)`,
-            }}
-            {...remainingProps}
-        />
-    )
-}
+import { Button } from '../components/shared/Button'
+import { DetailSlice, PackageSlice } from '../components/slices/PriceSlices'
 
 export const AnimateOut = ({ threshold = 0.15, triggerOnce = false, isMatch = false, ...remainingProps }) => {
     const [ref, inView] = useInView({ threshold, triggerOnce })
@@ -43,7 +29,7 @@ export const AnimateOut = ({ threshold = 0.15, triggerOnce = false, isMatch = fa
     )
 }
 
-interface PricingBodyProps {
+export interface PricingBodyProps {
     id: string
     slice_type: string
     primary: {
@@ -59,10 +45,12 @@ interface PricingBodyProps {
         image: {
             url: string
             alt: null
+            fluid: FluidObject
         }
         image_banner: {
             url: string
             alt: null
+            fluid: FluidObject
         }
         description: {
             raw: RichTextBlock[]
@@ -113,6 +101,12 @@ export const query = graphql`
                             image_banner {
                                 url
                                 alt
+                                fluid {
+                                    src
+                                    srcSet
+                                    aspectRatio
+                                    sizes
+                                }
                             }
                             description {
                                 raw
@@ -138,6 +132,12 @@ export const query = graphql`
                             image {
                                 url
                                 alt
+                                fluid {
+                                    src
+                                    srcSet
+                                    aspectRatio
+                                    sizes
+                                }
                             }
                             description {
                                 raw
@@ -150,169 +150,42 @@ export const query = graphql`
     }
 `
 
-const S = {
-    PricingContainer: styled.div<{ height?: string }>`
-        height: ${({ height }) => (height ? `${height}vh` : '60vh')};
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        width: 700px;
-        text-align: justify;
+const PricingContainer = styled.div<{ height?: string }>`
+    height: ${({ height }) => (height ? `${height}vh` : '60vh')};
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 700px;
+    text-align: justify;
 
-        p {
-            line-height: 2em;
-        }
+    p {
+        line-height: 2em;
+    }
 
-        @media only screen and (max-width: ${({ theme }) => theme.width.xl}) {
-            padding: 3em;
-            height: auto;
-        }
-        @media only screen and (max-width: ${({ theme }) => theme.width.md}) {
-            padding: 1em;
-            font-size: 16px;
-            width: 80%;
-        }
-        @media only screen and (max-width: ${({ theme }) => theme.width.sm}) {
-            padding: 10px;
-            font-size: 14px;
-            width: 100%;
-        }
-    `,
-    CardContainer: styled.div`
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        width: 800px;
-        margin: auto;
-    `,
-    Card: styled.div`
-        width: 30%;
-        padding: 1em;
-        height: 500px;
-        border: 1px solid grey;
-    `,
-    PackageBanner: styled(AnimateIn)`
+    @media only screen and (max-width: ${({ theme }) => theme.width.xl}) {
         padding: 3em;
-        height: 100vh;
+        height: auto;
+    }
+    @media only screen and (max-width: ${({ theme }) => theme.width.md}) {
+        padding: 1em;
+        font-size: 16px;
+        width: 80%;
+    }
+    @media only screen and (max-width: ${({ theme }) => theme.width.sm}) {
+        padding: 10px;
+        font-size: 14px;
         width: 100%;
-        overflow: hidden;
-        margin: auto;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        img {
-            position: absolute;
-            width: 70%;
-            object-fit: contain;
-        }
-
-        @media only screen and (max-width: ${({ theme }) => theme.width.xl}) {
-            padding: 0;
-            height: auto;
-            flex-direction: column;
-
-            img {
-                position: relative;
-                width: 100%;
-            }
-        }
-    `,
-    TitleContainer: styled.div<{ left?: boolean; center?: boolean }>`
-        position: absolute;
-        background: ${({ theme }) => theme.palette.white};
-        padding: 3em 4em;
-        top: 50%;
-        max-width: 600px;
-        ${({ left }) => (left ? { left: 0 } : { right: 0 })};
-        transform: translate(${({ left }) => (left ? '0, -50%' : '10%, -50%')});
-        text-align: ${({ left }) => (left ? 'left' : 'right')};
-        text-align: center;
-        ${({ center }) =>
-            center && { left: 0, right: 0, transform: 'translateY(50%)', width: '60%', margin: 'auto' }}
-
-        h2, p {
-            width: 100%;
-            margin: auto;
-            line-height: 1.8em;
-        }
-        h2 {
-            font-size: 1.2em;
-        }
-
-        p {
-            font-size: 0.8em;
-        }
-
-        @media only screen and (max-width: ${({ theme }) => theme.width.xl}) {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transform: none;
-            width: 80%;
-        }
-        @media only screen and (max-width: ${({ theme }) => theme.width.sm}) {
-            width: 100%;
-        }
-    `,
-    DetailBanner: styled(AnimateIn)`
-        height: 60vh;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 200px;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @media only screen and (max-width: ${({ theme }) => theme.width.xl}) {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            transform: none;
-            height: auto;
-            margin: 0;
-        }
-    `,
-    Button: styled.a`
-        margin: 5em auto;
-        padding: 1em 3em;
-        border: 1px solid ${({ theme }) => theme.palette.center};
-        color: ${({ theme }) => theme.palette.center};
-    `,
-}
+    }
+`
 
 const renderSlices = (slice: PricingBodyProps, i: number) => {
     switch (slice.slice_type) {
         case 'package_banner':
-            return (
-                <S.PackageBanner className="package_banner" triggerOnce={true}>
-                    <img src={slice.primary.image.url} alt="" />
-                    <S.TitleContainer left={i % 2 !== 0}>
-                        <RichText render={slice.primary.package.raw} />
-                        <RichText render={slice.primary.price.raw} />
-                        <RichText render={slice.primary.description.raw} />
-                    </S.TitleContainer>
-                </S.PackageBanner>
-            )
+            return <PackageSlice key={i} {...slice} index={i} />
         case 'detail_banner':
-            return (
-                <S.DetailBanner className="detail_banner" triggerOnce={true}>
-                    <img src={slice.primary.image_banner.url} alt="" />
-                    <S.TitleContainer center>
-                        <RichText render={slice.primary.title.raw} />
-                        <RichText render={slice.primary.description.raw} />
-                    </S.TitleContainer>
-                </S.DetailBanner>
-            )
+            return <DetailSlice key={i} {...slice} index={i} />
         default:
             return <div />
     }
@@ -328,17 +201,17 @@ const PricingPage: React.FC<PricingPageProps> = ({ data }) => {
     return (
         <Layout>
             <SEO title="Pricing" />
-            <S.PricingContainer className="container mt5">
+            <PricingContainer className="container mt5">
                 <RichText render={pricing?.raw} />
                 <RichText render={description?.raw} />
-            </S.PricingContainer>
+            </PricingContainer>
             {body?.map(renderSlices)}
-            <S.PricingContainer className="container text-center" height="20">
-                <S.Button href="/contact">Contact Us</S.Button>
-            </S.PricingContainer>
+            <PricingContainer className="container text-center" height="20">
+                <Button href="/contact">Contact Us</Button>
+            </PricingContainer>
         </Layout>
     )
 }
 
 // @ts-ignore
-export default withTheme(PricingPage)
+export default PricingPage

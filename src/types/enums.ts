@@ -1,3 +1,5 @@
+import { FluidObject } from 'gatsby-image'
+
 export enum Breakpoints {
     xl = 1200,
     lg = 992,
@@ -16,7 +18,7 @@ export enum GridStyle {
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 export interface HeroProps {
-    backgroundImage?: string
+    backgroundImage?: FluidObject
     logo?: JSX.Element
 }
 

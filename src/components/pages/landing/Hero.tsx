@@ -1,3 +1,4 @@
+import BackgroundImage from 'gatsby-background-image'
 import * as React from 'react'
 
 import { HeroProps } from '../../../types/enums'
@@ -5,14 +6,9 @@ import { HeroProps } from '../../../types/enums'
 const Hero: React.FC<HeroProps> = ({ logo, backgroundImage }) => {
     return (
         backgroundImage && (
-            <div
-                className="flex flex-column flex-center hero"
-                style={{
-                    backgroundImage: `url(${backgroundImage})`,
-                }}
-            >
+            <BackgroundImage fluid={backgroundImage} className="flex flex-column flex-center hero" fadeIn>
                 {logo}
-            </div>
+            </BackgroundImage>
         )
     )
 }
