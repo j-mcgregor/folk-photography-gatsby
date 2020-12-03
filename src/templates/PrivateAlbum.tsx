@@ -1,13 +1,15 @@
 import { faDownload } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { graphql } from 'gatsby'
+import { FluidObject } from 'gatsby-image'
 import * as moment from 'moment'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
 
 import Layout from '../components/Layout'
-import AlbumContainer from '../components/pages/gallery/AlbumContainer'
+import GalleryContainer from '../components/pages/gallery/GalleryContainer'
+import { PortfoliImageProps } from '../pages/portfolio'
 import { AnimateOut } from '../pages/pricing'
 import { AlbumImageProps } from './Album'
 
@@ -27,6 +29,7 @@ export interface AlbumsPageNodeProps {
         password: string
         download_link: {
             url: string
+            fluid: FluidObject
         }
         description: {
             raw: RichTextBlock[]
@@ -117,6 +120,16 @@ const PrivateAlbum: React.FC<PrivateAlbumPageType> = ({ data }) => {
         }
     }, [isPasswordMatch])
 
+    const allImages = album.body[0].items.map(b => {
+        return {
+            image: b.gallery_image,
+            alt_text: {
+                raw: [],
+            },
+            caption: b.image_captions,
+        } as PortfoliImageProps
+    })
+
     return (
         <Layout>
             <div className="container-fluid">
@@ -148,7 +161,7 @@ const PrivateAlbum: React.FC<PrivateAlbumPageType> = ({ data }) => {
                         isMatch={isPasswordMatch}
                     />
                 </div>
-                {isPasswordMatch && album.body[0]?.items && <AlbumContainer images={album.body[0].items} />}
+                {isPasswordMatch && album.body[0]?.items && <GalleryContainer images={allImages} />}
             </div>
         </Layout>
     )
@@ -178,6 +191,12 @@ export const query = graphql`
                         items {
                             gallery_image {
                                 url
+                                fluid {
+                                    src
+                                    srcSet
+                                    aspectRatio
+                                    sizes
+                                }
                             }
                             image_captions {
                                 raw

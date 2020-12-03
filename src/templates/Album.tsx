@@ -3,8 +3,8 @@ import { FluidObject } from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
+
 import Layout from '../components/Layout'
-import AlbumContainer from '../components/pages/gallery/AlbumContainer'
 import GalleryContainer from '../components/pages/gallery/GalleryContainer'
 import { PortfoliImageProps } from '../pages/portfolio'
 

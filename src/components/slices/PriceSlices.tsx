@@ -37,6 +37,7 @@ const PackageBanner = styled(AnimateIn)`
     .gatsby-image-wrapper {
         position: absolute;
         width: 100%;
+        height: 90%;
         object-fit: contain;
     }
 

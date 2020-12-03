@@ -5,4 +5,12 @@ export const Button = styled.a`
     padding: 1em 3em;
     border: 1px solid ${({ theme }) => theme.palette.center};
     color: ${({ theme }) => theme.palette.center};
+    transition: 0.1s;
+    text-transform: uppercase;
+
+    &:hover {
+        text-decoration: none;
+        color: ${({ theme }) => theme.palette.light};
+        background: ${({ theme }) => theme.palette.center};
+    }
 `
