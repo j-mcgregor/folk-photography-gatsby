@@ -113,7 +113,7 @@ const Layout = (props: LayoutProps) => (
                                 },
                                 {
                                     to: '/contact',
-                                    content: 'Get in touch',
+                                    content: 'Contact',
                                 },
                             ]}
                             links={data.prismicContact.data.social_links}
