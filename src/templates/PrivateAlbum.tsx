@@ -1,17 +1,16 @@
-import { faDownload } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { graphql } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
-import * as moment from 'moment'
-import { RichText, RichTextBlock } from 'prismic-reactjs'
-import * as React from 'react'
-import styled from 'styled-components'
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { graphql } from 'gatsby';
+import { FluidObject } from 'gatsby-image';
+import * as moment from 'moment';
+import { RichText, RichTextBlock } from 'prismic-reactjs';
+import * as React from 'react';
+import styled from 'styled-components';
 
-import Layout from '../components/Layout'
-import GalleryContainer from '../components/pages/gallery/GalleryContainer'
-import { PortfoliImageProps } from '../pages/portfolio'
-import { AnimateOut } from '../pages/pricing'
-import { AlbumImageProps } from './Album'
+import Layout from '../components/Layout';
+import GalleryContainer from '../components/pages/gallery/GalleryContainer';
+import { AnimateOut } from '../pages/pricing';
+import { AlbumImageProps } from './Album';
 
 export interface AlbumPageNodeBodyProps {
     id: string
@@ -127,7 +126,7 @@ const PrivateAlbum: React.FC<PrivateAlbumPageType> = ({ data }) => {
                 raw: [],
             },
             caption: b.image_captions,
-        } as PortfoliImageProps
+        }
     })
 
     return (
@@ -142,6 +141,7 @@ const PrivateAlbum: React.FC<PrivateAlbumPageType> = ({ data }) => {
                                 <a
                                     href={album.download_link.url}
                                     target="_blank"
+                                    rel="noreferrer"
                                     className="btn btn-lg text-uppercase pt3"
                                     type="button"
                                 >

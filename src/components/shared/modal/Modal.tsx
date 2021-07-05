@@ -60,7 +60,6 @@ export const Content: React.FC<ContentProps> = ({ children, onClick }) => {
 }
 
 const Modal: React.FC<ModalProps> = ({ isOpen, src, handleClose, caption }) => {
-    console.log(caption)
     return (
         <div className="modal" style={{ display: isOpen ? 'block' : 'none' }}>
             <span className="close" onClick={handleClose} data-testid="close">

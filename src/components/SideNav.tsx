@@ -1,9 +1,9 @@
-import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons'
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
-import { faMinus, faPhone, faPlus } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'gatsby'
-import * as React from 'react'
+import { faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'gatsby';
+import * as React from 'react';
 
 export interface LinkProps {
     content: string
@@ -64,7 +64,6 @@ const Iconised = ({ name, url }: { name: string; url: string }) => {
 }
 
 const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
-    const [showSubNav, setShowSubNav] = React.useState<boolean>(false)
 
     return (
         <div className="sidenav">
@@ -81,26 +80,7 @@ const SideNav: React.FC<SideNavProps> = ({ logo, title, options, links }) => {
                 <>
                     <span className="link-item" key={nav.to.replace(/ /g, '-')}>
                         <Link to={nav.to}>{nav.content}</Link>
-                        {nav.content === 'Portfolio' && (
-                            <FontAwesomeIcon
-                                icon={showSubNav ? faMinus : faPlus}
-                                size="xs"
-                                onClick={() => setShowSubNav(!showSubNav)}
-                                style={{ cursor: 'pointer' }}
-                            />
-                        )}
                     </span>
-                    {showSubNav && (
-                        <div className="subnav-container">
-                            {nav.subnav?.map(sub => {
-                                return (
-                                    <Link key={sub.to} to={sub.to} className="pl1">
-                                        <small>{sub.content}</small>
-                                    </Link>
-                                )
-                            })}
-                        </div>
-                    )}
                 </>
             ))}
             {/* HIDE ON SMALL */}

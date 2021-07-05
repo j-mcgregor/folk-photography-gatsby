@@ -4,14 +4,14 @@
  *
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
-import '../assets/stylesheets/main.scss'
-import 'flexboxgrid2/flexboxgrid2.css'
+import '../assets/stylesheets/main.scss';
+import 'flexboxgrid2/flexboxgrid2.css';
 
-import { graphql, StaticQuery } from 'gatsby'
-import * as React from 'react'
+import { graphql, StaticQuery } from 'gatsby';
+import * as React from 'react';
+import { ThemeProvider } from 'styled-components';
 
-import SideNav, { LinkProps } from './SideNav'
-import { ThemeProvider } from 'styled-components'
+import SideNav from './SideNav';
 
 export const theme = {
     palette: {
@@ -92,14 +92,6 @@ const Layout = (props: LayoutProps) => (
             }
         `}
         render={data => {
-            const subnav: LinkProps[] = data.allPrismicAlbum.nodes?.map((s: any) => {
-                const nav: LinkProps = {
-                    to: `/portfolio/${s.uid}`,
-                    content: s.uid,
-                }
-                return nav
-            })
-
             return (
                 <ThemeProvider theme={theme}>
                     <div className="main-container">
@@ -114,7 +106,6 @@ const Layout = (props: LayoutProps) => (
                                 {
                                     to: '/portfolio',
                                     content: 'Portfolio',
-                                    subnav,
                                 },
                                 {
                                     to: '/pricing',
