@@ -37,10 +37,8 @@ export const query = graphql`
 
         file(sourceInstanceName: { eq: "images" }, relativePath: { eq: "folk-photography-logo-white.png" }) {
             childImageSharp {
-                fixed(width: 600, height: 600) {
+                fluid(maxWidth: 600) {
                     base64
-                    width
-                    height
                     src
                     srcSet
                 }
@@ -70,7 +68,7 @@ interface IndexPageProps {
         }
         file: {
             childImageSharp: {
-                fixed: FixedObject
+                fluid: FluidObject
             }
         }
     }
@@ -85,10 +83,21 @@ const StyledHomePage = styled.div`
     }
 `
 
+const StyledImg = styled(Img)`
+    width: 600px;
+    height: 600px;
+
+    @media only screen and (max-width: 360px) {
+        width: 300px;
+        height: 300px;
+    }
+`
+
 const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } }) => {
     const { primary_text, secondary_text, about, background_image } = prismicLanding.data
 
-    const logo = <Img fixed={file.childImageSharp?.fixed} alt="Logo" />
+    // @ts-ignore
+    const logo = <StyledImg fluid={file.childImageSharp?.fluid} alt="Logo" />
 
     return (
         <Layout>
