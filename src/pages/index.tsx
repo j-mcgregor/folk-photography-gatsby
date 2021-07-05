@@ -87,7 +87,7 @@ const StyledImg = styled(Img)`
     width: 600px;
     height: 600px;
 
-    @media only screen and (max-width: 360px) {
+    @media only screen and (max-width: 600px) {
         width: 300px;
         height: 300px;
     }
