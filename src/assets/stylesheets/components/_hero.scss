@@ -1,6 +1,6 @@
 .hero {
     background-size: cover;
-    background-position: right center;
+    background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     height: 100vh;
@@ -11,13 +11,6 @@
         font-family: 'Abel', sans-serif;
     }
 
-    @media screen and (max-width: $width-md) {
-        height: 600px;
-    }
-    @media screen and (max-width: $width-sm) {
-        height: 500px;
-    }
-
     @keyframes fadeIn {
         from {
             opacity: 0;
@@ -26,4 +19,23 @@
             opacity: 1;
         }
     }
+}
+
+@media screen and (max-width: $width-md) {
+    #hero-bg,
+    #hero-bg::before,
+    #hero-bg::after {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: $width-sm) {
+    #hero-bg,
+    #hero-bg::before,
+    #hero-bg::after {
+        height: 100%;
+        width: 100%;
+        background-attachment: scroll !important;
+        background-size: cover !important;
+    }   
 }

@@ -6,7 +6,12 @@ import { HeroProps } from '../../../types/enums'
 const Hero: React.FC<HeroProps> = ({ logo, backgroundImage }) => {
     return (
         backgroundImage && (
-            <BackgroundImage fluid={backgroundImage} className="flex flex-column flex-center hero" fadeIn>
+            <BackgroundImage
+                fluid={backgroundImage}
+                className="flex flex-column flex-center hero"
+                fadeIn
+                id="hero-bg"
+            >
                 {logo}
             </BackgroundImage>
         )

@@ -87,9 +87,13 @@ const StyledImg = styled(Img)`
     width: 600px;
     height: 600px;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 768px) {
         width: 300px;
         height: 300px;
+    }
+    @media only screen and (max-width: 576px) {
+        width: 200px;
+        height: 200px;
     }
 `
 
@@ -97,7 +101,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
     const { primary_text, secondary_text, about, background_image } = prismicLanding.data
 
     // @ts-ignore
-    const logo = <StyledImg fluid={file.childImageSharp?.fluid} alt="Logo" />
+    const logo = <StyledImg fluid={file.childImageSharp?.fluid} alt="Logo" id="logo" />
 
     return (
         <Layout>
