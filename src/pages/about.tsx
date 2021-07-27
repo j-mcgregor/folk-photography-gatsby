@@ -61,6 +61,7 @@ const StyledAboutPage = styled.div`
         .gatsby-image-wrapper {
             margin-top: 1em;
             width: 50%;
+            margin: auto;
         }
     }
 `
@@ -73,8 +74,9 @@ const AboutPage: React.FC<AboutPageProps> = ({ data }) => {
             <SEO title="About" />
             <StyledAboutPage className="about flex flex-column">
                 <RichText render={title.raw} />
-                <div className="description text-justify">
+                <div className="description text-left">
                     <RichText render={description.raw} />
+
                     <Img fluid={main_image.fluid} alt="Logo" />
                 </div>
             </StyledAboutPage>
