@@ -24,7 +24,7 @@ function SEO(props: SEOProps) {
         `
     )
 
-    const metaTitle = props.title || site.siteMetadata.title
+    const metaTitle = props.title || site.siteMetadata.title || 'Folk Photography'
     const metaDescription = props.description || site.siteMetadata.description
 
     return (
