@@ -89,6 +89,86 @@
                 },
                 "label": "experience"
             }
+        },
+        "key_title": {
+            "type": "StructuredText",
+            "config": {
+                "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+                "label": "key_title"
+            }
+        },
+        "key_subtitle": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph",
+                "label": "key_subtitle"
+            }
+        },
+        "key_subtext": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph",
+                "label": "key_subtext"
+            }
+        },
+        "key_coverage": {
+            "type": "StructuredText",
+            "config": {
+                "multi": "paragraph",
+                "label": "key_coverage"
+            }
+        },
+        "body": {
+            "type": "Slices",
+            "fieldset": "Slice zone",
+            "config": {
+                "labels": {
+                    "banner": []
+                },
+                "choices": {
+                    "quote": {
+                        "type": "Slice",
+                        "fieldset": "Quote",
+                        "description": "A short quote with author's portrait",
+                        "icon": "add_alert",
+                        "non-repeat": {
+                            "quote": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "single": "em",
+                                    "label": "Quote",
+                                    "placeholder": "Your quote"
+                                }
+                            },
+                            "name_of_the_author": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph",
+                                    "label": "Name of the author",
+                                    "placeholder": "John Doe"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    },
+                    "text": {
+                        "type": "Slice",
+                        "fieldset": "Text",
+                        "description": "Rich Text Section",
+                        "icon": "text_fields",
+                        "non-repeat": {
+                            "text_block": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, rtl",
+                                    "label": "text block"
+                                }
+                            }
+                        },
+                        "repeat": {}
+                    }
+                }
+            }
         }
     }
 }

@@ -7,6 +7,9 @@ interface BannerProps {
 
 const StyledBanner = styled.div`
     font-family: 'Raleway-Thin';
+    width: 700px;
+    text-align: center;
+    font-weight: 600;
 
     h2 {
         text-transform: uppercase;
@@ -18,6 +21,9 @@ const StyledBanner = styled.div`
         a {
             color: red;
         }
+    }
+    @media only screen and (max-width: 768px) {
+        width: 100%;
     }
 `
 

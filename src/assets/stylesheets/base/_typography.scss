@@ -72,8 +72,22 @@ p {
     color: $primary-color;
 }
 
+.text-cursive {
+    font-family: 'Italianno';
+    letter-spacing: 4px;
+    margin: 1em auto;
+    color: #555;
+    font-weight: 100;
+}
+
 .text-secondary {
-    color: $secondary-color;
+    font-family: 'PlayfairDisplay';
+    font-weight: 100;
+    letter-spacing: 2px;
+}
+
+.text-gold {
+    color: gold;
 }
 
 .text-success {

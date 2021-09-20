@@ -1,8 +1,7 @@
-import * as React from 'react'
 import Img from 'gatsby-image'
+import * as React from 'react'
 
 import { PortfoliImageProps } from '../../../pages/portfolio'
-import { GridStyle } from '../../../types/enums'
 import { chunkArray } from '../../../utils/chunkArray'
 import createKey from '../../../utils/createKey'
 import { GalleryUtils } from '../../../utils/helpers/gallery'
@@ -58,9 +57,7 @@ const GalleryContainer: React.FC<GalleryContainerProps> = ({ images }) => {
      */
 
     const handleImageClick = (e: React.MouseEvent<HTMLImageElement>) => {
-        console.log(e.currentTarget.dataset['img'])
         return images.filter((i, x) => {
-            console.log('url', i.image.url)
             if (i.image.url === e.currentTarget.dataset['img']) {
                 // set the current selected image
                 setSelected(i)
