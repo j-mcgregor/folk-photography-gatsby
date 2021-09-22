@@ -71,7 +71,7 @@ const S = {
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        font-family: 'Raleway-Thin';
+        font-family: 'LibreBaskerville-Regular';
         padding: 0.7em 4em;
 
         img {

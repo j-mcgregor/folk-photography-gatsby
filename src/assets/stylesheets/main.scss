@@ -49,27 +49,20 @@
 // 7. Themes
 @import 'themes/default';
 
+// DANCING SCRIPT
 @font-face {
-    font-family: 'Raleway-Light';
-    src: url(../fonts/Raleway/Raleway-Light.ttf) format('truetype');
+    font-family: 'DancingScript-Regular';
+    src: url(../fonts/Dancing_Script/DancingScript-Regular.ttf) format('truetype');
 }
 
+// LIBRE BASKERVILLE
 @font-face {
-    font-family: 'Raleway-Regular';
-    src: url(../fonts/Raleway/Raleway-Regular.ttf) format('truetype');
+    font-family: 'LibreBaskerville-Regular';
+    src: url(../fonts/Libre_Baskerville/LibreBaskerville-Regular.ttf) format('truetype');
 }
 
+// Montserrat
 @font-face {
-    font-family: 'Raleway-Thin';
-    src: url(../fonts/Raleway/Raleway-Thin.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: 'Italianno';
-    src: url(../fonts/Italianno-Regular.ttf) format('truetype');
-}
-
-@font-face {
-    font-family: 'PlayfairDisplay';
-    src: url(../fonts/PlayfairDisplay-Regular.ttf) format('truetype');
+    font-family: 'Montserrat-Regular';
+    src: url(../fonts/Montserrat/Montserrat-Regular.ttf) format('truetype');
 }

@@ -123,7 +123,8 @@
             "fieldset": "Slice zone",
             "config": {
                 "labels": {
-                    "banner": []
+                    "banner": [],
+                    "key_section": []
                 },
                 "choices": {
                     "quote": {
@@ -166,6 +167,44 @@
                             }
                         },
                         "repeat": {}
+                    },
+                    "key_section": {
+                        "type": "Slice",
+                        "fieldset": "key section",
+                        "description": "key section",
+                        "icon": "ac_unit",
+                        "display": "list",
+                        "non-repeat": {},
+                        "repeat": {
+                            "key_title1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "heading1, heading2, heading3, heading4, heading5, heading6",
+                                    "label": "key_title"
+                                }
+                            },
+                            "key_subtitle1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "heading1, heading2, heading3, heading4, heading5, heading6",
+                                    "label": "key subtitle"
+                                }
+                            },
+                            "key_subtext1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "heading1, heading2, heading3, heading4, heading5",
+                                    "label": "key_subtext"
+                                }
+                            },
+                            "key_coverage1": {
+                                "type": "StructuredText",
+                                "config": {
+                                    "multi": "heading1, heading2, heading3, heading4, heading5, heading6",
+                                    "label": "key_coverage"
+                                }
+                            }
+                        }
                     }
                 }
             }

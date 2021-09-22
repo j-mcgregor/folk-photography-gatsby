@@ -69,11 +69,12 @@ p {
 // COLOR
 
 .text-primary {
-    color: $primary-color;
+    font-family: 'DancingScript-Regular';
+    font-weight: 100;
 }
 
 .text-cursive {
-    font-family: 'Italianno';
+    font-family: 'DancingScript-Regular';
     letter-spacing: 4px;
     margin: 1em auto;
     color: #555;
@@ -81,7 +82,7 @@ p {
 }
 
 .text-secondary {
-    font-family: 'PlayfairDisplay';
+    font-family: 'Montserrat-Regular';
     font-weight: 100;
     letter-spacing: 2px;
 }
@@ -214,9 +215,6 @@ p {
     color: $white !important;
 }
 
-.text-primary {
-    color: $primary-color !important;
-}
 a.text-primary:hover,
 a.text-primary:focus {
     color: darken($primary-color, 10%) !important;

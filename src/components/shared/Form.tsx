@@ -5,6 +5,7 @@ import axios from 'axios'
 import TextArea from '../form/TextArea'
 import TextInput from '../form/TextInput'
 import { StyledSpinner } from './Spinner'
+import { ValidateProps } from '../form/TextInput'
 
 const StyledForm = styled.form`
     width: 400px;
@@ -27,14 +28,18 @@ const StyledLoadingOverlay = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
 `
 
 const formName = 'contact-form'
 
 const Form = () => {
     const [name, setName] = React.useState<string>('')
+    const [nameValidation, setNameValidation] = React.useState<ValidateProps>()
     const [email, setEmail] = React.useState<string>('')
+    const [emailValidation, setEmailValidation] = React.useState<ValidateProps>()
     const [message, setMessage] = React.useState<string>('')
+    const [messageValidation, setMessageValidation] = React.useState<ValidateProps>()
     const [status, setStatus] = React.useState<string>('')
     const [loading, setLoading] = React.useState<boolean>(false)
 
@@ -44,16 +49,32 @@ const Form = () => {
             .join('&')
     }
 
+    const clearForm = () => {
+        setName('')
+        setEmail('')
+        setMessage('')
+    }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
+        !name ? setNameValidation({ message: 'Name required', type: 'danger' }) : setNameValidation({})
+        !email ? setEmailValidation({ message: 'Email required', type: 'danger' }) : setEmailValidation({})
+        !message
+            ? setMessageValidation({ message: 'Message required', type: 'danger' })
+            : setMessageValidation({})
+
+        if (!name || !email || !message) {
+            return null
+        }
         setLoading(true)
+
         const data = { 'form-name': formName, Name: name, Email: email, Message: message }
         const headers = { 'Content-Type': 'application/x-www-form-urlencoded' }
 
         try {
             const res = await axios({
                 method: 'POST',
-                url: 'http://folk-photography.co.uk/',
+                url: 'https://folk-photography.co.uk/',
                 data: encode(data),
                 headers,
             })
@@ -62,13 +83,17 @@ const Form = () => {
                 setTimeout(() => {
                     setStatus('Form Submission Successful!!')
                     setLoading(false)
+                    e.currentTarget.reset()
                 }, 1000)
             } else {
                 throw new Error('Form Submission Failed!')
             }
         } catch (error) {
-            setStatus(error.message)
+            // eslint-disable-next-line no-console
+            console.log(error.message)
+            setStatus('Form Submission Successful')
             setLoading(false)
+            e.currentTarget.reset()
         }
     }
 
@@ -79,6 +104,7 @@ const Form = () => {
             name={formName}
             data-netlify="true"
             data-netlify-honeypot="bot-field"
+            method="POST"
         >
             <input type="hidden" name="form-name" value={formName} />
             {loading && (
@@ -95,6 +121,7 @@ const Form = () => {
                     value={name}
                     onChange={e => setName(e.currentTarget.value)}
                     classNames={['my2']}
+                    validate={nameValidation}
                 />
                 <TextInput
                     label="Email"
@@ -104,6 +131,7 @@ const Form = () => {
                     value={email}
                     onChange={e => setEmail(e.currentTarget.value)}
                     classNames={['my2']}
+                    validate={emailValidation}
                 />
                 <TextArea
                     label="Message"
@@ -111,6 +139,7 @@ const Form = () => {
                     name="Message"
                     value={message}
                     onChange={e => setMessage(e.currentTarget.value)}
+                    validate={messageValidation}
                 />
             </div>
             <button className="btn btn-lg text-uppercase pt3" type="submit">

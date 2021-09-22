@@ -6,7 +6,7 @@ interface BannerProps {
 }
 
 const StyledBanner = styled.div`
-    font-family: 'Raleway-Thin';
+    font-family: 'LibreBaskerville-Regular';
     width: 700px;
     text-align: center;
     font-weight: 600;

@@ -1,7 +1,6 @@
 form {
     width: 100%;
     legend {
-        color: $primary-color;
         border-top: 4px double rgba($primary-color, 0.5);
         text-transform: uppercase;
         padding-top: 10px;
@@ -41,7 +40,6 @@ form {
             font-family: inherit;
             font-weight: 700;
             font-size: $font-size;
-            color: $primary-color;
             width: 100%;
             border: 0;
             border-bottom: 1px solid $light-grey-10;
@@ -137,7 +135,7 @@ form {
     .valid-feedback {
         color: $success-color;
     }
-    .valid-infeedback {
+    .invalid-feedback {
         color: $danger-color;
     }
 

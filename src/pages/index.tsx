@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
-import { FixedObject, FluidObject } from 'gatsby-image'
+import { FluidObject } from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import Banner from '../components/pages/landing/Banner'
@@ -21,18 +21,6 @@ export const query = graphql`
                     raw
                 }
                 about {
-                    raw
-                }
-                key_title {
-                    raw
-                }
-                key_subtitle {
-                    raw
-                }
-                key_subtext {
-                    raw
-                }
-                key_coverage {
                     raw
                 }
                 background_image {
@@ -65,6 +53,22 @@ export const query = graphql`
                             }
                         }
                     }
+                    ... on PrismicLandingBodyKeySection {
+                        items {
+                            key_title1 {
+                                raw
+                            }
+                            key_subtitle1 {
+                                raw
+                            }
+                            key_subtext1 {
+                                raw
+                            }
+                            key_coverage1 {
+                                raw
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -80,6 +84,21 @@ export const query = graphql`
         }
     }
 `
+
+interface KeySlice {
+    key_title1: {
+        raw: RichTextBlock[]
+    }
+    key_subtitle1: {
+        raw: RichTextBlock[]
+    }
+    key_subtext1: {
+        raw: RichTextBlock[]
+    }
+    key_coverage1: {
+        raw: RichTextBlock[]
+    }
+}
 
 interface IndexPageProps {
     data: {
@@ -98,24 +117,21 @@ interface IndexPageProps {
                     url: string
                     fluid: FluidObject
                 }
-                key_title: {
-                    raw: RichTextBlock[]
-                }
-                key_subtitle: {
-                    raw: RichTextBlock[]
-                }
-                key_subtext: {
-                    raw: RichTextBlock[]
-                }
-                key_coverage: {
-                    raw: RichTextBlock[]
-                }
+
                 body: {
                     id: string
+                    __typename: string
+                    items: KeySlice[]
                     primary: {
-                        quote: { raw: RichTextBlock[] }
-                        name_of_the_author: { raw: RichTextBlock[] }
-                        text_block: { raw: RichTextBlock[] }
+                        quote: {
+                            raw: RichTextBlock[]
+                        }
+                        name_of_the_author: {
+                            raw: RichTextBlock[]
+                        }
+                        text_block: {
+                            raw: RichTextBlock[]
+                        }
                     }
                 }[]
             }
@@ -129,8 +145,8 @@ interface IndexPageProps {
 }
 
 const StyledHomePage = styled.div`
-    font-weight: bold;
     width: 100%;
+
     p {
         line-height: 2em;
         margin: 4em 0;
@@ -144,7 +160,7 @@ const StyledHomePage = styled.div`
             margin: 0;
         }
         .text-cursive {
-            font-size: 2em;
+            font-size: 1.4em;
         }
     }
     .quote-block {
@@ -182,7 +198,7 @@ const StyledHomePage = styled.div`
             font-size: 14px;
         }
         p {
-            font-family: 'Raleway-Thin';
+            font-family: 'LibreBaskerville-Regular';
             font-style: italic;
             margin: 0 auto;
         }
@@ -204,33 +220,24 @@ const StyledImg = styled(Img)`
 `
 
 const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } }) => {
-    const {
-        primary_text,
-        secondary_text,
-        background_image,
-        key_title,
-        key_subtitle,
-        key_subtext,
-        key_coverage,
-        body,
-    } = prismicLanding.data
+    const { primary_text, secondary_text, background_image, body } = prismicLanding.data
 
     // @ts-ignore
     const logo = <StyledImg fluid={file.childImageSharp?.fluid} alt="Logo" id="logo" />
 
-    const key_section = (
+    const KeySectionSlice: React.FC<{ item: KeySlice }> = ({ item }) => (
         <div className="key-section">
             <div className="text-gold h3-style">
-                <RichText render={key_title?.raw} />
+                <RichText render={item.key_title1?.raw} />
             </div>
             <div className="text-secondary text-uppercase ">
-                <RichText render={key_subtitle?.raw} />
+                <RichText render={item.key_subtitle1?.raw} />
             </div>
             <div className="text-cursive">
-                <RichText render={key_subtext?.raw} />
+                <RichText render={item.key_subtext1?.raw} />
             </div>
             <div className="font-italic">
-                <RichText render={key_coverage?.raw} />
+                <RichText render={item.key_coverage1?.raw} />
             </div>
         </div>
     )
@@ -243,22 +250,28 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
                 <Banner>
                     {primary_text && <RichText render={primary_text.raw} />}
                     {secondary_text && <RichText render={secondary_text.raw} />}
-                    {key_section && key_section}
-                    {body.map((b, i) => (
-                        <>
-                            {b.primary.quote && (
-                                <div className="quote-block">
-                                    <div className="quote">
-                                        <RichText render={b.primary.quote.raw} key={i} />
+                    {body.map((b, i) => {
+                        switch (b.__typename) {
+                            case 'PrismicLandingBodyKeySection':
+                                return <KeySectionSlice item={b.items[0]} />
+                            case 'PrismicLandingBodyQuote':
+                                return (
+                                    <div className="quote-block">
+                                        <div className="quote">
+                                            <RichText render={b.primary.quote.raw} key={i} />
+                                        </div>
+                                        <div className="quote-author">
+                                            <RichText render={b.primary.name_of_the_author.raw} key={i} />
+                                        </div>
                                     </div>
-                                    <div className="quote-author">
-                                        <RichText render={b.primary.name_of_the_author.raw} key={i} />
-                                    </div>
-                                </div>
-                            )}
-                            {b.primary.text_block && <RichText render={b.primary.text_block.raw} key={i} />}
-                        </>
-                    ))}
+                                )
+
+                            case 'PrismicLandingBodyText':
+                                return <RichText render={b.primary.text_block.raw} key={i} />
+                            default:
+                                return null
+                        }
+                    })}
                 </Banner>
             </StyledHomePage>
         </Layout>

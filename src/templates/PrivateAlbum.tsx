@@ -1,16 +1,16 @@
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { graphql } from 'gatsby';
-import { FluidObject } from 'gatsby-image';
-import * as moment from 'moment';
-import { RichText, RichTextBlock } from 'prismic-reactjs';
-import * as React from 'react';
-import styled from 'styled-components';
+import { faDownload } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { graphql } from 'gatsby'
+import { FluidObject } from 'gatsby-image'
+import * as moment from 'moment'
+import { RichText, RichTextBlock } from 'prismic-reactjs'
+import * as React from 'react'
+import styled from 'styled-components'
 
-import Layout from '../components/Layout';
-import GalleryContainer from '../components/pages/gallery/GalleryContainer';
-import { AnimateOut } from '../pages/pricing';
-import { AlbumImageProps } from './Album';
+import Layout from '../components/Layout'
+import GalleryContainer from '../components/pages/gallery/GalleryContainer'
+import { AnimateOut } from '../pages/pricing'
+import { AlbumImageProps } from './Album'
 
 export interface AlbumPageNodeBodyProps {
     id: string
@@ -58,7 +58,7 @@ const S = {
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        font-family: 'Raleway-Thin';
+        font-family: 'LibreBaskerville-Regular';
         padding: 0.7em 4em;
 
         img {
