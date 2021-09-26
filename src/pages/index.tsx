@@ -148,25 +148,32 @@ const StyledHomePage = styled.div`
     width: 100%;
 
     p {
-        line-height: 2em;
+        /* line-height: 2em; */
         margin: 4em 0;
+    }
+
+    .text-section p {
+        line-height: 2em;
+        font-weight: 100;
     }
 
     .key-section {
         border-top: 1px solid #ccc;
         border-bottom: 1px solid #ccc;
+        font-weight: 100;
         padding: 2em 0;
+
         p {
             margin: 0;
         }
-        .text-cursive {
-            font-size: 1.4em;
-        }
     }
+
     .quote-block {
         width: 100%;
-        margin: 4em auto;
+        margin: 4em auto 0;
         color: #555;
+        font-size: 1.2em;
+
         .quote {
             display: inline-flex;
             text-align: center;
@@ -195,12 +202,11 @@ const StyledHomePage = styled.div`
             }
         }
         .quote-author {
-            font-size: 14px;
-        }
-        p {
-            font-family: 'LibreBaskerville-Regular';
-            font-style: italic;
-            margin: 0 auto;
+            /* font-size: 0.7em; */
+            p {
+                padding: 0;
+                margin: 0;
+            }
         }
     }
 `
@@ -227,13 +233,13 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
 
     const KeySectionSlice: React.FC<{ item: KeySlice }> = ({ item }) => (
         <div className="key-section">
-            <div className="text-gold h3-style">
+            <div className="">
                 <RichText render={item.key_title1?.raw} />
             </div>
-            <div className="text-secondary text-uppercase ">
+            <div className="text-secondary">
                 <RichText render={item.key_subtitle1?.raw} />
             </div>
-            <div className="text-cursive">
+            <div className="">
                 <RichText render={item.key_subtext1?.raw} />
             </div>
             <div className="font-italic">
@@ -256,7 +262,7 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
                                 return <KeySectionSlice item={b.items[0]} />
                             case 'PrismicLandingBodyQuote':
                                 return (
-                                    <div className="quote-block">
+                                    <div className="quote-block text-cursive">
                                         <div className="quote">
                                             <RichText render={b.primary.quote.raw} key={i} />
                                         </div>
@@ -267,7 +273,11 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
                                 )
 
                             case 'PrismicLandingBodyText':
-                                return <RichText render={b.primary.text_block.raw} key={i} />
+                                return (
+                                    <div className="text-section">
+                                        <RichText render={b.primary.text_block.raw} key={i} />
+                                    </div>
+                                )
                             default:
                                 return null
                         }
