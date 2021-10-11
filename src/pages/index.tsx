@@ -4,11 +4,13 @@ import { RichText, RichTextBlock } from 'prismic-reactjs'
 import * as React from 'react'
 import styled from 'styled-components'
 import { FluidObject } from 'gatsby-image'
+import ImageGallery from 'react-image-gallery'
 
 import Layout from '../components/Layout'
 import Banner from '../components/pages/landing/Banner'
 import Hero from '../components/pages/landing/Hero'
 import SEO from '../components/SEO'
+import { ImageField } from 'gatsby-source-prismic/dist/types'
 
 export const query = graphql`
     query IndexPageQuery {
@@ -69,6 +71,22 @@ export const query = graphql`
                             }
                         }
                     }
+                    ... on PrismicLandingBodyImageGallery {
+                        id
+                        slice_type
+                        items {
+                            image_captions {
+                                raw
+                            }
+                            gallery_image {
+                                url
+                                alt
+                                fluid(maxHeight: 300, maxWidth: 400) {
+                                    src
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -98,6 +116,10 @@ interface KeySlice {
     key_coverage1: {
         raw: RichTextBlock[]
     }
+    image_captions: {
+        raw: RichTextBlock[]
+    }
+    gallery_image: ImageField & { fluid: { src: string } }
 }
 
 interface IndexPageProps {
@@ -226,6 +248,7 @@ const StyledImg = styled(Img)`
 `
 
 const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } }) => {
+    console.log(prismicLanding)
     const { primary_text, secondary_text, background_image, body } = prismicLanding.data
 
     // @ts-ignore
@@ -276,6 +299,27 @@ const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } })
                                 return (
                                     <div className="text-section">
                                         <RichText render={b.primary.text_block.raw} key={i} />
+                                    </div>
+                                )
+                            case 'PrismicLandingBodyImageGallery':
+                                return (
+                                    <div className="text-section">
+                                        <ImageGallery
+                                            items={b.items.map(item => ({
+                                                original: item.gallery_image.url,
+                                                thumbnail: item.gallery_image.fluid.src,
+                                                originalAlt: item.gallery_image.alt,
+                                            }))}
+                                            autoPlay
+                                            infinite
+                                            showThumbnails={false}
+                                            showBullets
+                                            showPlayButton={false}
+                                            showFullscreenButton={false}
+                                            showNav={false}
+                                            slideInterval={4000}
+                                            useTranslate3D
+                                        />
                                     </div>
                                 )
                             default:
