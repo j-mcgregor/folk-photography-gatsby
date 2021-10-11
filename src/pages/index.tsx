@@ -72,7 +72,6 @@ export const query = graphql`
                         }
                     }
                     ... on PrismicLandingBodyImageGallery {
-                        id
                         slice_type
                         items {
                             image_captions {
@@ -248,7 +247,6 @@ const StyledImg = styled(Img)`
 `
 
 const IndexPage: React.FC<IndexPageProps> = ({ data: { prismicLanding, file } }) => {
-    console.log(prismicLanding)
     const { primary_text, secondary_text, background_image, body } = prismicLanding.data
 
     // @ts-ignore
